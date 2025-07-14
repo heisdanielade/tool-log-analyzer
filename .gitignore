@@ -6,3 +6,6 @@ __pycache__/
 
 # VSCode settings
 .vscode/
+
+# Test config
+config.json
