@@ -47,3 +47,7 @@ class LogAnalyzer:
     def export_csv(self, data: List[dict], path: str) -> None:
         """Export data to CSV file."""
         self.exporter.to_csv(data, path)
+
+    def export_json(self, data: List[dict], path: str) -> None:
+        """Export data to JSON file."""
+        self.exporter.to_json(data, path)

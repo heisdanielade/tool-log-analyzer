@@ -1,5 +1,6 @@
 from typing import List
 import csv
+import json
 from tabulate import tabulate
 
 
@@ -34,5 +35,7 @@ class Exporter:
             writer.writeheader()
             writer.writerows(data)
 
-    # TODO: Add JSON export
-    # TODO: Add Excel (xlsx) export
+    def to_json(self, data: list[dict], file_path: str) -> None:
+        """Write JSON data to file."""
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
