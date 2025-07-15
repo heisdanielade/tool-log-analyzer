@@ -43,6 +43,7 @@ class LogFilter:
         self,
         logs: List[dict],
         level: Optional[str] = None,
+        limit: Optional[int] = None,
         start: Optional[str] = None,
         end: Optional[str] = None
     ) -> List[dict]:
@@ -52,4 +53,6 @@ class LogFilter:
             result = self.filter_by_level(result, level)
         if start and end:
             result = self.filter_by_date_range(result, start, end)
+        if limit and limit < len(result):
+            result = result[0:limit]
         return result
