@@ -7,5 +7,7 @@ __pycache__/
 # VSCode settings
 .vscode/
 
-# Test config
+# Test
 config.json
+sample_logs/
+*.csv

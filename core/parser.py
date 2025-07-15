@@ -7,7 +7,7 @@ class LogParser:
 
     # Predefined formats and their regex patterns
     available_formats = {
-        "simple": r"^(?P<datetime>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(?:,\d+)?) - (?P<level>\w+) - (?P<message>.+)$",
+        "simple": r"^(?P<datetime>.*?) \[(?P<level>\w+)\] .*?: (?P<message>.*)$",
         "apache": r'^(?P<ip>\S+) - - \[(?P<datetime>[^\]]+)\] "(?P<method>\S+) (?P<path>\S+) \S+" (?P<status>\d+) \d+$',
     }
 
