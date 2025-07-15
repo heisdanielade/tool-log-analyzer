@@ -53,6 +53,11 @@ class LogFilter:
             result = self.filter_by_level(result, level)
         if start and end:
             result = self.filter_by_date_range(result, start, end)
-        if limit and limit < len(result):
-            result = result[0:limit]
+        if limit is None:
+            pass
+        elif 0 < limit < len(result):
+            result = result[:limit]
+        elif limit == 00:
+            result = result[0:]
+
         return result
