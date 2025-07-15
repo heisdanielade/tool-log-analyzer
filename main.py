@@ -69,15 +69,27 @@ def filter(
 @app.command()
 def export(
     file: str = typer.Option(None, help="Log file path (default from config)"),
+    type: str = typer.Argument(..., help="To CSV or JSON file"),
     output: str = typer.Argument(..., help="Output CSV file"),
     level: str = typer.Option(None, help="Filter by log level"),
     limit: int = typer.Option(None, help="Result data limit, 00 for all data"),
     start: str = typer.Option(None, help="Start datetime"),
     end: str = typer.Option(None, help="End datetime")
 ):
-    """Parse, filter and export logs to CSV."""
+    """Parse, filter and export logs to CSV or JSON."""
     entries = analyzer.filter_logs(file, level, limit, start, end)
-    analyzer.export_csv(entries, output)
+    dot_index = output.rfind(".")
+    file_extension = output[dot_index+1:].lower()
+    export_type = type.lower()
+
+    if export_type == "csv" and file_extension == "csv":
+        analyzer.export_csv(entries, output)
+    elif export_type == "json" and file_extension == "json":
+        analyzer.export_json(entries, output)
+    else:
+        print(f"{export_type=}, {file_extension=}")
+        print("Invalid file type or combination")
+        return
     typer.echo(f"Exported {len(entries)} entries to {output}")
 
 
