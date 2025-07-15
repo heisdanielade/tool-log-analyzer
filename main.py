@@ -1,10 +1,12 @@
 import pyfiglet
 import typer
+import sys
+import click
+from colorama import init, Fore
 from core.config import ConfigManager
 from core.analyzer import LogAnalyzer
 
-ascii_art = pyfiglet.figlet_format("Log Analyzer", font="slant")
-print(ascii_art)
+init(autoreset=True)
 
 app = typer.Typer(help="Log Analyzer CLI: Parse, filter, summarize logs.")
 config_app = typer.Typer(help="Manage user configurations.")
@@ -16,6 +18,31 @@ default_parsing_format = "simple"
 
 
 @app.command()
+def interactive():
+    """
+    Start interactive Log Analyzer CLI session.
+    """
+    ascii_art = pyfiglet.figlet_format("Log Analyzer", font="slant")
+    print(ascii_art)
+
+    while True:
+        try:
+            command = input("log-analyzer>> ").strip()
+            if command in ("exit", "quit", "q"):
+                print("\nGoodbye!\n")
+                break
+            if command:
+                sys.argv = ["main.py"] + command.split()
+                try:
+                    app(standalone_mode=False)
+                except click.exceptions.ClickException as e:
+                    print(Fore.RED + f"(e) {e.format_message()}\n")
+        except (KeyboardInterrupt, EOFError):
+            print("\nGoodbye!\n")
+            break
+
+
+@app.command()
 def analyze(
     file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
@@ -24,7 +51,7 @@ def analyze(
     """Parse and display all log entries."""
     entries = analyzer.analyze()
     analyzer.print_table(entries)
-    typer.echo(f"Analyzing with {parse_format} format")
+    typer.echo(Fore.GREEN + f"Analyzed with {parse_format} format")
 
 
 @app.command()
@@ -40,8 +67,8 @@ def summary(
     counts = analyzer.summarize(file)
     summary_data = [{"level": k, "count": v} for k, v in counts.items()]
     analyzer.print_table(summary_data)
-    typer.echo(
-        f"Summarizing with {parse_format} format, output to {output}")
+    typer.echo(Fore.GREEN +
+               f"Summarized with {parse_format} format, output to {output}")
 
 
 @app.command()
@@ -62,8 +89,8 @@ def filter(
     entries = analyzer.filter_logs(file, level, limit, start, end)
     analyzer.print_table(entries)
 
-    typer.echo(
-        f"Filtering with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
+    typer.echo(Fore.GREEN +
+               f"Filtered with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
 
 
 @app.command()
@@ -87,10 +114,10 @@ def export(
     elif export_type == "json" and file_extension == "json":
         analyzer.export_json(entries, output)
     else:
-        print(f"{export_type=}, {file_extension=}")
-        print("Invalid file type or combination")
+        print(Fore.RED + "Invalid file type or combination")
+        print(Fore.RED + f"{export_type=}, {file_extension=}")
         return
-    typer.echo(f"Exported {len(entries)} entries to {output}")
+    typer.echo(Fore.GREEN + f"Exported {len(entries)} entries to {output}")
 
 
 @config_app.command("set")
@@ -116,7 +143,7 @@ def show_config():
     cm = ConfigManager()
     config = cm.all()
     if not config:
-        typer.echo("No config set yet.")
+        typer.echo(Fore.YELLOW + "No config set yet.")
     else:
         typer.echo("Current Configuration:\n")
         for key, value in config.items():
@@ -124,4 +151,9 @@ def show_config():
 
 
 if __name__ == "__main__":
-    app()
+    if len(sys.argv) == 1:
+        # No subcommand given
+        interactive()
+    else:
+        # Subcommands or flags given
+        app()
