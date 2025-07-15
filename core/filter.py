@@ -53,11 +53,3 @@ class LogFilter:
         if start and end:
             result = self.filter_by_date_range(result, start, end)
         return result
-
-
-logs = [
-    {"datetime": "2025-07-13 14:22:35,234",
-        "level": "INFO", "message": "System started"},
-    {"datetime": "2025-07-13 14:24:11,879",
-        "level": "ERROR", "message": "DB failed"},
-]

@@ -17,21 +17,20 @@ default_parsing_format = "simple"
 @app.command()
 def analyze(
     file: str = typer.Option(..., "--file", "-f", help="Path to log file"),
-    format: str = typer.Option(
+    parse_format: str = typer.Option(
         default_parsing_format, "--format", "-p", help="Parsing format/profile")
 ):
     """Parse and display all log entries."""
     # TODO: Load config if needed
     # TODO: Create LogAnalyzer, LogParser instances
     # TODO: Parse and print results as table
-    typer.echo(f"Analyzing {file} with {format} format")
-    pass
+    typer.echo(f"Analyzing {file} with {parse_format} format")
 
 
 @app.command()
 def summary(
         file: str = typer.Option(..., "--file", "-f", help="Path to log file"),
-        format: str = typer.Option(
+        parse_format: str = typer.Option(
             default_parsing_format, "--format", "-p", help="Parsing format/profile"),
         output: str = typer.Option(
             None, "--output", "-o", help="CSV output file (optional)")
@@ -41,14 +40,13 @@ def summary(
     # TODO: Create LogAnalyzer, LogSummary
     # TODO: Print summary or export to CSV
     typer.echo(
-        f"Summarizing {file} with {format} format, output to {output}")
-    pass
+        f"Summarizing {file} with {parse_format} format, output to {output}")
 
 
 @app.command()
 def filter(
     file: str = typer.Option(..., "--file", "-f", help="Path to log file"),
-    format: str = typer.Option(
+    parse_format: str = typer.Option(
         default_parsing_format, "--format", "-p", help="Parsing format/profile"),
     level: str = typer.Option(
         None, "--level", "-l", help="Filter by log level"),
@@ -66,15 +64,14 @@ def filter(
     # TODO: Create LogAnalyzer, LogSummary
     # TODO: Print or export filtered logs
     typer.echo(
-        f"Filtering {file} with level={level}, date_range={start} to {end}, result_limit={limit} format={format}")
-    pass
+        f"Filtering {file} with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
 
 
 @config_app.command("set")
 def set_config(
     default_file: str = typer.Option(
         None, "--default-file", help="Default log file path"),
-    format: str = typer.Option(
+    parse_format: str = typer.Option(
         None, "--format", help="Default parsing format/profile")
 ):
     """Save user configurations."""
@@ -82,7 +79,7 @@ def set_config(
     if default_file:
         config_manager.set("default_file", default_file)
     if format:
-        config_manager.set("format", format)
+        config_manager.set("format", parse_format)
     config_manager.save()
     typer.echo("Configurations updated.")
 
