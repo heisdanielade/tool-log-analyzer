@@ -21,18 +21,19 @@ class LogAnalyzer:
         """Parse entire log file."""
         if not file_path:
             file_path = self.config.get("default_file")
-        return self.parser.parse_file(file_path) # type: ignore
+        return self.parser.parse_file(file_path)  # type: ignore
 
     def filter_logs(
         self,
         file_path: Optional[str] = None,
         level: Optional[str] = None,
+        limit: Optional[int] = None,
         start: Optional[str] = None,
         end: Optional[str] = None
     ) -> List[dict]:
         """Parse and filter logs."""
         logs = self.analyze(file_path)
-        return self.filter.filter(logs, level, start, end)
+        return self.filter.filter(logs, level, limit, start, end)
 
     def summarize(self, file_path: Optional[str] = None) -> Dict[str, int]:
         """Parse and summarize log levels."""
