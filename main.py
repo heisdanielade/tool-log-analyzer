@@ -17,19 +17,20 @@ default_parsing_format = "simple"
 
 @app.command()
 def analyze(
-    file: str = typer.Option(..., "--file", "-f", help="Path to log file"),
+    file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
         default_parsing_format, "--format", "-p", help="Parsing format/profile")
 ):
     """Parse and display all log entries."""
-    entries = analyzer.analyze(file)
+    entries = analyzer.analyze()
     analyzer.print_table(entries)
-    typer.echo(f"Analyzing {file} with {parse_format} format")
+    typer.echo(f"Analyzing with {parse_format} format")
 
 
 @app.command()
 def summary(
-        file: str = typer.Option(..., "--file", "-f", help="Path to log file"),
+        file: str = typer.Option(None, "--file", "-f",
+                                 help="Path to log file"),
         parse_format: str = typer.Option(
             default_parsing_format, "--format", "-p", help="Parsing format/profile"),
         output: str = typer.Option(
@@ -40,12 +41,12 @@ def summary(
     summary_data = [{"level": k, "count": v} for k, v in counts.items()]
     analyzer.print_table(summary_data)
     typer.echo(
-        f"Summarizing {file} with {parse_format} format, output to {output}")
+        f"Summarizing with {parse_format} format, output to {output}")
 
 
 @app.command()
 def filter(
-    file: str = typer.Option(..., "--file", "-f", help="Path to log file"),
+    file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
         default_parsing_format, "--format", "-p", help="Parsing format/profile"),
     level: str = typer.Option(
@@ -62,7 +63,7 @@ def filter(
     analyzer.print_table(entries)
 
     typer.echo(
-        f"Filtering {file} with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
+        f"Filtering with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
 
 
 @app.command()
@@ -105,9 +106,9 @@ def show_config():
     if not config:
         typer.echo("No config set yet.")
     else:
+        typer.echo("Current Configuration:\n")
         for key, value in config.items():
-            typer.echo("Current Configuration:")
-            typer.echo(f"{key}: {value}\n")
+            typer.echo(f"- {key}: {value}")
 
 
 if __name__ == "__main__":
