@@ -9,8 +9,15 @@ class Exporter:
         if not data:
             return "No data to display."
 
+        def truncate(s, width=60):
+            s = str(s)
+            return s if len(s) <= width else s[:width - 3] + "..."
+
         headers = data[0].keys()
-        rows = [item.values() for item in data]
+        rows = [
+            [truncate(item[h]) for h in headers]
+            for item in data
+        ]
         table = tabulate(rows, headers=headers,  # type: ignore
                          tablefmt="grid")
         return table
