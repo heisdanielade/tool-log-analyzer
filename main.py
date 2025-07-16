@@ -14,7 +14,7 @@ app.add_typer(config_app, name="config")
 
 analyzer = LogAnalyzer()
 
-default_parsing_format = "simple"
+DEFAULT_FORMAT = "simple"
 
 
 @app.command()
@@ -46,7 +46,7 @@ def interactive():
 def analyze(
     file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
-        default_parsing_format, "--format", "-p", help="Parsing format/profile")
+        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile")
 ):
     """Parse and display all log entries."""
     entries = analyzer.analyze()
@@ -59,7 +59,7 @@ def summary(
         file: str = typer.Option(None, "--file", "-f",
                                  help="Path to log file"),
         parse_format: str = typer.Option(
-            default_parsing_format, "--format", "-p", help="Parsing format/profile"),
+            DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"),
         output: str = typer.Option(
             None, "--output", "-o", help="CSV output file (optional)")
 ):
@@ -75,7 +75,7 @@ def summary(
 def filter(
     file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
-        default_parsing_format, "--format", "-p", help="Parsing format/profile"),
+        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"),
     level: str = typer.Option(
         None, "--level", "-l", help="Filter by log level"),
     limit: int = typer.Option(
