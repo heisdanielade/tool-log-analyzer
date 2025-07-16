@@ -3,11 +3,6 @@ from core.filter import LogFilter
 from datetime import datetime
 
 
-@pytest.fixture
-def log_filter():
-    return LogFilter()
-
-
 # Sample log entries to use in tests
 SAMPLE_LOGS = [
     {"datetime": "2025-07-05 14:06:09,890",
@@ -25,11 +20,16 @@ SAMPLE_LOGS = [
 ]
 
 
-def test_filter_by_level(log_filter):
+@pytest.fixture
+def log_filter():
+    return LogFilter()
+
+
+def test_filter_by_level(log_filter, expected_result_count: int = 1):
     """Filter parsed logs by DEBUG logs."""
     level = "DEBUG"
     result = log_filter.filter_by_level(SAMPLE_LOGS, level)
-    assert len(result) == 1
+    assert len(result) == expected_result_count
     assert result[0]["level"] == level
 
 
@@ -45,7 +45,7 @@ def test_filter_by_date_range(log_filter):
     assert all(start <= log["datetime"] <= end for log in result)
 
 
-def test_filter_by_limit(log_filter):
+def test_filter_by_limit(log_filter, expected_result_count: int = 2):
     """Filter on INFO logs but limit result dataset to 2."""
     result = log_filter.filter(SAMPLE_LOGS, level="INFO", limit=2)
     print(f"filter_by_limit_result: {result}\n")
@@ -54,7 +54,7 @@ def test_filter_by_limit(log_filter):
     assert result[1]["message"] == "Message D"
 
 
-def test_filter_by_level_and_date_range(log_filter):
+def test_filter_by_level_and_date_range(log_filter, expected_result_count: int = 1):
     """Filter only ERROR logs on a specific day."""
     level = "ERROR"
     start = "2025-07-06 00:00:00,000"
@@ -67,7 +67,7 @@ def test_filter_by_level_and_date_range(log_filter):
     assert result[0]["level"] == "ERROR"
 
 
-def test_invalid_log_level(log_filter):
+def test_invalid_log_level(log_filter, expected_result_count: int = 0):
     """
     Filter by an invalid log level.
     Result set should be empty due invalid/incorrect log level.
@@ -76,4 +76,4 @@ def test_invalid_log_level(log_filter):
     result = log_filter.filter(SAMPLE_LOGS, level=level)
 
     print(f"filter_by_invalid_level_result: {result}\n")
-    assert len(result) == 0
+    assert len(result) == expected_result_count
