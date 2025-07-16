@@ -1,5 +1,8 @@
 import re
 from typing import List, Optional
+from colorama import init, Fore
+
+init(autoreset=True)
 
 
 class LogParser:
@@ -35,12 +38,15 @@ class LogParser:
         Skips lines that don't match.
         """
         parsed_entries = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                parsed = self.parse_line(line)
-                if parsed:
-                    parsed_entries.append(parsed)
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    parsed = self.parse_line(line)
+                    if parsed:
+                        parsed_entries.append(parsed)
+        except FileNotFoundError:
+            print(Fore.RED + f"No such file or directory: {path}")
         return parsed_entries
