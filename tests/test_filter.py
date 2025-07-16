@@ -50,7 +50,7 @@ def test_filter_by_limit(log_filter, expected_result_count: int = 2):
     result = log_filter.filter(SAMPLE_LOGS, level="INFO", limit=2)
     print(f"filter_by_limit_result: {result}\n")
 
-    assert len(result) == 2
+    assert len(result) == expected_result_count
     assert result[1]["message"] == "Message D"
 
 
@@ -63,7 +63,7 @@ def test_filter_by_level_and_date_range(log_filter, expected_result_count: int =
     result = log_filter.filter(SAMPLE_LOGS, level=level, start=start, end=end)
     print(f"filter_by_level_and_date_range_result: {result}\n")
 
-    assert len(result) == 1
+    assert len(result) == expected_result_count
     assert result[0]["level"] == "ERROR"
 
 

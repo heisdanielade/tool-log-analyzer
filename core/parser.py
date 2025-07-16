@@ -6,17 +6,17 @@ class LogParser:
     """Convert raw log lines into structured dictionaries using a selected regex profile."""
 
     # Predefined formats and their regex patterns
-    available_formats = {
+    AVAILABLE_FORMATS = {
         "simple": r"^(?P<datetime>.*?) \[(?P<level>\w+)\] .*?: (?P<message>.*)$",
         "apache": r'^(?P<ip>\S+) - - \[(?P<datetime>[^\]]+)\] "(?P<method>\S+) (?P<path>\S+) \S+" (?P<status>\d+) \d+$',
     }
 
     def __init__(self, format_name: str = "simple"):
-        if format_name not in self.available_formats:
+        if format_name not in self.AVAILABLE_FORMATS:
             raise ValueError(
-                f"Unsupported format: '{format_name}'. Supported: {list(self.available_formats.keys())}")
+                f"Unsupported format: '{format_name}'. Supported: {list(self.AVAILABLE_FORMATS.keys())}")
         self.format_name = format_name
-        self.pattern = re.compile(self.available_formats[format_name])
+        self.pattern = re.compile(self.AVAILABLE_FORMATS[format_name])
 
     def parse_line(self, line: str) -> Optional[dict]:
         """
