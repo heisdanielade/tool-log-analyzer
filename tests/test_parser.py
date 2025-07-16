@@ -24,6 +24,7 @@ def test_parse_line_success_with_simple_format(log_parser):
 
     print(f"parse_line_success_result: {result}\n")
 
+    assert isinstance(result, dict)
     assert result["datetime"] == expected_parsed_datetime
     assert result["level"] == expected_parsed_level
     assert result["message"] == expected_parsed_message
@@ -48,21 +49,24 @@ def test_parse_file_success_with_simple_format(log_parser, expected_result_count
     result = log_parser.parse_file(file)
 
     print(f"parse_file_success_result: {result}\n")
+    assert isinstance(result, list)
     assert len(result) == expected_result_count
     assert result[0]["level"] == "DEBUG"
     assert result[1]["message"] == "Info message."
     assert result[2]["datetime"] == "2025-07-05 14:23:34,865"
 
 
-def test_parse_file_with_invalid_file_path(log_parser, expected_result_count: int = 4):
+def test_parse_file_with_invalid_file_path(log_parser, capsys, expected_result_count: int = 0):
     """
     Parse file correctly using default format (simple) and
     return List containing dicts of parsed log entries.
     """
     file = "Invalid file path"
+    result = log_parser.parse_file(file)
 
-    with pytest.raises(FileNotFoundError):
-        log_parser.parse_file(file)
+    captured = capsys.readouterr()
+    assert "No such file or directory" in captured.out
+    assert len(result) == expected_result_count
 
 
 def test_parse_with_unsupported_format():
