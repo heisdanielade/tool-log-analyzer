@@ -117,7 +117,7 @@ def export(
         print(Fore.RED + "Invalid file type or combination")
         print(Fore.RED + f"{export_type=}, {file_extension=}")
         return
-    typer.echo(Fore.GREEN + f"Exported {len(entries)} entries to {output}")
+    typer.echo(f"Exported {len(entries)} entries to {output}\n")
 
 
 @config_app.command("set")
