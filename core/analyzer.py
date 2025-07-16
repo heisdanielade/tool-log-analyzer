@@ -5,8 +5,15 @@ from core.summary import LogSummary
 from core.exporter import Exporter
 from typing import List, Dict, Optional
 
+import os
+from colorama import init, Fore
+
+init(autoreset=True)
+
 
 class LogAnalyzer:
+    """Analyzer class to associate CLI command with designated feature."""
+
     def __init__(self, config_file: str = "config.json"):
         self.config_manager = ConfigManager(config_file)
         self.config = self.config_manager.load()
@@ -17,10 +24,20 @@ class LogAnalyzer:
         self.summary = LogSummary()
         self.exporter = Exporter()
 
+    def handle_invalid_file_path(self, file) -> None:
+        """
+        Helper method to handle FileNotFoundError if user provided
+        file path does not exists.
+        """
+        if file and not os.path.exists(file):
+            print(Fore.RED + f"No such file or directory: {file}")
+            exit(1)
+
     def analyze(self, file_path: Optional[str] = None) -> List[dict]:
         """Parse entire log file."""
         if not file_path:
             file_path = self.config.get("default_file")
+        self.handle_invalid_file_path(file_path)
         return self.parser.parse_file(file_path)  # type: ignore
 
     def filter_logs(
@@ -32,11 +49,13 @@ class LogAnalyzer:
         end: Optional[str] = None
     ) -> List[dict]:
         """Parse and filter logs."""
+        self.handle_invalid_file_path(file_path)
         logs = self.analyze(file_path)
         return self.filter.filter(logs, level, limit, start, end)
 
     def summarize(self, file_path: Optional[str] = None) -> Dict[str, int]:
         """Parse and summarize log levels."""
+        self.handle_invalid_file_path(file_path)
         logs = self.analyze(file_path)
         return self.summary.count_levels(logs)
 
