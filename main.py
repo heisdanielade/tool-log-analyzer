@@ -1,6 +1,7 @@
 import pyfiglet
 import typer
 import sys
+import os
 import click
 from colorama import init, Fore
 from core.config import ConfigManager
@@ -49,9 +50,11 @@ def analyze(
         DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile")
 ):
     """Parse and display all log entries."""
-    entries = analyzer.analyze()
+    entries = analyzer.analyze(file)
     analyzer.print_table(entries)
-    typer.echo(Fore.GREEN + f"Analyzed with {parse_format} format")
+
+    if file is not None and os.path.exists(file):
+        typer.echo(Fore.GREEN + f"Analyzed {file} with {parse_format} format")
 
 
 @app.command()
@@ -67,8 +70,9 @@ def summary(
     counts = analyzer.summarize(file)
     summary_data = [{"level": k, "count": v} for k, v in counts.items()]
     analyzer.print_table(summary_data)
-    typer.echo(Fore.GREEN +
-               f"Summarized with {parse_format} format, output to {output}")
+    if file is not None and os.path.exists(file):
+        typer.echo(Fore.GREEN +
+                   f"Summarized with {parse_format} format, output to {output}")
 
 
 @app.command()
@@ -89,8 +93,9 @@ def filter(
     entries = analyzer.filter_logs(file, level, limit, start, end)
     analyzer.print_table(entries)
 
-    typer.echo(Fore.GREEN +
-               f"Filtered with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
+    if file is not None and os.path.exists(file):
+        typer.echo(Fore.GREEN +
+                   f"Filtered with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
 
 
 @app.command()
@@ -117,7 +122,9 @@ def export(
         print(Fore.RED + "Invalid file type or combination")
         print(Fore.RED + f"{export_type=}, {file_extension=}")
         return
-    typer.echo(f"Exported {len(entries)} entries to {output}\n")
+
+    if file is not None and os.path.exists(file):
+        typer.echo(f"Exported {len(entries)} entries to {output}\n")
 
 
 @config_app.command("set")
