@@ -1,0 +1,4 @@
+2025-07-05 14:06:09,890 [DEBUG] core.api_client: Debug message.
+2025-07-05 14:22:27,552 [INFO] test.mock_api_client: Info message.
+2025-07-05 14:23:34,865 [ERROR] test.mock_api_client: Error message.
+2025-07-05 14:23:34,865 [WARNING] test.mock_api_client: Warning message.
