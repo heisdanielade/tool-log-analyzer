@@ -1,6 +1,6 @@
+import sys
 import pyfiglet
 import typer
-import sys
 import click
 from colorama import init, Fore
 from core.config import ConfigManager

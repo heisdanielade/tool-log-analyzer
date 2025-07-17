@@ -1,3 +1,5 @@
+import os
+from colorama import init, Fore
 from core.config import ConfigManager
 from core.parser import LogParser
 from core.filter import LogFilter
@@ -5,8 +7,6 @@ from core.summary import LogSummary
 from core.exporter import Exporter
 from typing import List, Dict, Optional
 
-import os
-from colorama import init, Fore
 
 init(autoreset=True)
 

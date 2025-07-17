@@ -35,12 +35,18 @@ class LogParser:
         Skips lines that don't match.
         """
         parsed_entries = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                parsed = self.parse_line(line)
-                if parsed:
-                    parsed_entries.append(parsed)
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    parsed = self.parse_line(line)
+                    if parsed:
+                        parsed_entries.append(parsed)
+        except FileNotFoundError:
+            print(f"No such file or directory: {path}")
+        except Exception as e:
+            print(f"[ERROR] {e}")
+
         return parsed_entries
