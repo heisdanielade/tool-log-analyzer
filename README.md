@@ -18,16 +18,57 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 
 Core flow:
 
-1. Load Config or Use Defaults
+1. **Load Config or Use Defaults**
    App loads user preferences and regex pattern. Falls back to a default if none is provided.
 2. Parse Log File
-   Each line in the log is converted into a dictionary with keys like `datetime`, `level`, and `message`.
-3. Filter (Optional)
-   You can narrow results by level, date, or number of results.
-4. Analyze or Summarize
-   The app can display all logs in a table or show a summary report of how many logs per level.
-5. Export (Optional)
-   You can export results to a file for further analysis.
+   Each line in the log is converted into a dictionary with structured fields (like `datetime`, `level`, `message`, `ip`, etc.).
+3. **Filter (Optional)**
+   Narrow results by level, date, or limit.
+4. **Analyze or Summarize**
+   Display logs in a table or generate summary counts.
+5. **Export (Optional)**
+   Export results to CSV/JSON for further analysis.
+
+## Available Formats
+
+This tool comes with a few pre-configured log formats out of the box.
+You can also supply your own regex directly via CLI or in `config.json`.
+
+- **simple** → generic logs with `datetime`, `level` and `message`
+
+```yaml
+2025-08-28 12:34:56 [INFO] Server started: Listening on port 8080
+```
+
+- **apache** → Apache access logs (common format)
+
+```yaml
+192.200.2.2 - - [28/Aug/2025:12:34:56 +0000] "GET /index.html HTTP/1.1" 200 512
+```
+
+- **nginx** → Nginx access logs (combined format, includes referrer & user-agent)
+
+```yaml
+192.100.1.1 - - [28/Aug/2025:12:34:56 +0000] "GET /index.html HTTP/1.1" 200 1024 "http://example.com" "Mozilla/5.0"
+```
+
+- **custom (user-defined regex)** → Any custom format
+  Example (inline via CLI):
+
+```bash
+python main.py analyze --file logs/app.log --format custom --regex "^(?P<ts>\S+) (?P<level>\w+) (?P<msg>.*)$"
+
+```
+
+Or define in `config.json`:
+
+```json
+{
+  "default_file": "logs/custom_app.log",
+  "format": "custom",
+  "custom_regex": "^(?P<ts>\\S+) (?P<level>\\w+) (?P<msg>.*)$"
+}
+```
 
 ## Setup Instructions
 
@@ -59,13 +100,19 @@ In interactive mode, commands are written without **_python main.py_**
 
 ```bash
 python main.py
-log-analyzer>> analyze
+log-analyzer>> analyze --file logs/access.log --format nginx
 ```
 
 - Analyze All Logs
 
 ```bash
-python main.py analyze --file path/to/logfile.log
+python main.py analyze --file path/to/logfile.log --format apache
+```
+
+- Analyze with Custom Regex
+
+```bash
+python main.py analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
 ```
 
 - Summary of Log Levels
@@ -82,24 +129,36 @@ python main.py export --file path/to/logfile.log --output-format csv --output-pa
 
 ## Configuration
 
-You can define your default log file name and parsing format type in a config file named `config.json` in the root directory.
+You can define defaults in `config.json` at the project root.
+
+Example with built-in format:
 
 ```json
 {
   "default_file": "logs/server_logs.log",
-  "format": "simple"
+  "format": "nginx"
+}
+```
+
+Example with custom format:
+
+```json
+{
+  "default_file": "logs/app.log",
+  "format": "custom",
+  "custom_regex": "^(?P<ts>\\S+) (?P<level>\\w+) (?P<msg>.*)$"
 }
 ```
 
 ## Testing
 
-Run tests from root directory using:
+Run tests from root directory:
 
 ```bash
 pytest -s
 ```
 
-The tests cover:
+Covers:
 
 - Log parsing (valid and invalid formats, files)
 - Log filtering (by level, date and limit)
@@ -135,6 +194,6 @@ It incorporates design patterns such as separation of concerns, configuration lo
 
 ---
 
-Developed by **[heisdanielade](https://www.heisdanielade.xyz/)**
+Developed by **[heisdanielade](https://github.com/heisdanielade)**
 
 ---
