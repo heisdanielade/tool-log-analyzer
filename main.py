@@ -5,14 +5,13 @@ import click
 from colorama import init, Fore
 from core.config import ConfigManager
 from core.analyzer import LogAnalyzer
+from core.parser import LogParser
 
 init(autoreset=True)
 
 app = typer.Typer(help="Log Analyzer CLI: Parse, filter, summarize logs.")
 config_app = typer.Typer(help="Manage user configurations.")
 app.add_typer(config_app, name="config")
-
-analyzer = LogAnalyzer()
 
 DEFAULT_FORMAT = "simple"
 
@@ -46,9 +45,15 @@ def interactive():
 def analyze(
     file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
-        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile")
+        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"
+    ),
+    regex: str = typer.Option(
+        None, "--regex", "-r", help="Custom regex (use with --format custom)"
+    ),
 ):
     """Parse and display all log entries."""
+    analyzer = LogAnalyzer()
+    analyzer.parser = LogParser(parse_format, custom_regex=regex)
     entries = analyzer.analyze(file)
     analyzer.print_table(entries)
     typer.echo(Fore.GREEN + f"Analyzed with {parse_format} format")
@@ -56,58 +61,76 @@ def analyze(
 
 @app.command()
 def summary(
-        file: str = typer.Option(None, "--file", "-f",
-                                 help="Path to log file"),
-        parse_format: str = typer.Option(
-            DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"),
-        output: str = typer.Option(
-            None, "--output", "-o", help="CSV output file (optional)")
+    file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
+    parse_format: str = typer.Option(
+        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"
+    ),
+    regex: str = typer.Option(
+        None, "--regex", "-r", help="Custom regex (use with --format custom)"
+    ),
+    output: str = typer.Option(
+        None, "--output", "-o", help="CSV output file (optional)"
+    ),
 ):
     """Generate summary of log levels."""
+    analyzer = LogAnalyzer()
+    analyzer.parser = LogParser(parse_format, custom_regex=regex)
     counts = analyzer.summarize(file)
     summary_data = [{"level": k, "count": v} for k, v in counts.items()]
     analyzer.print_table(summary_data)
-
-    typer.echo(Fore.GREEN +
-               f"Summarized with {parse_format} format, output to {output}")
+    typer.echo(Fore.GREEN + f"Summarized with {parse_format} format, output={output}")
 
 
 @app.command()
 def filter(
     file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
-        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"),
-    level: str = typer.Option(
-        None, "--level", "-l", help="Filter by log level"),
+        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"
+    ),
+    regex: str = typer.Option(
+        None, "--regex", "-r", help="Custom regex (use with --format custom)"
+    ),
+    level: str = typer.Option(None, "--level", "-l", help="Filter by log level"),
     limit: int = typer.Option(
-        None, "--limit", "-lm", help="Result data limit (optional)"),
-    start: str = typer.Option(
-        None, "--start", "-s", help="Start date (YYYY-MM-DD)"),
-    end: str = typer.Option(
-        None, "--end", "-e", help="End date (YYYY-MM-DD)")
+        None, "--limit", "-lm", help="Result data limit (optional)"
+    ),
+    start: str = typer.Option(None, "--start", "-s", help="Start date (YYYY-MM-DD)"),
+    end: str = typer.Option(None, "--end", "-e", help="End date (YYYY-MM-DD)"),
 ):
     """Filter logs by level and/or date range."""
+    analyzer = LogAnalyzer()
+    analyzer.parser = LogParser(parse_format, custom_regex=regex)
     entries = analyzer.filter_logs(file, level, limit, start, end)
     analyzer.print_table(entries)
-
-    typer.echo(Fore.GREEN +
-               f"Filtered with level={level}, date_range={start} to {end}, result_limit={limit} format={parse_format}")
+    typer.echo(
+        Fore.GREEN
+        + f"Filtered with format={parse_format}, level={level}, date_range={start} to {end}, limit={limit}"
+    )
 
 
 @app.command()
 def export(
     file: str = typer.Option(None, help="Log file path (default from config)"),
+    parse_format: str = typer.Option(
+        DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"
+    ),
+    regex: str = typer.Option(
+        None, "--regex", "-r", help="Custom regex (use with --format custom)"
+    ),
     type: str = typer.Argument(..., help="To CSV or JSON file"),
-    output: str = typer.Argument(..., help="Output CSV file"),
+    output: str = typer.Argument(..., help="Output CSV or JSON file"),
     level: str = typer.Option(None, help="Filter by log level"),
-    limit: int = typer.Option(None, help="Result data limit, 00 for all data"),
+    limit: int = typer.Option(None, help="Result data limit, 0 for all data"),
     start: str = typer.Option(None, help="Start datetime"),
-    end: str = typer.Option(None, help="End datetime")
+    end: str = typer.Option(None, help="End datetime"),
 ):
     """Parse, filter and export logs to CSV or JSON."""
+    analyzer = LogAnalyzer()
+    analyzer.parser = LogParser(parse_format, custom_regex=regex)
     entries = analyzer.filter_logs(file, level, limit, start, end)
+
     dot_index = output.rfind(".")
-    file_extension = output[dot_index+1:].lower()
+    file_extension = output[dot_index + 1 :].lower()
     export_type = type.lower()
 
     if export_type == "csv" and file_extension == "csv":
@@ -125,9 +148,11 @@ def export(
 @config_app.command("set")
 def set_config(
     default_file: str = typer.Option(
-        None, "--default-file", help="Default log file path"),
+        None, "--default-file", help="Default log file path"
+    ),
     parse_format: str = typer.Option(
-        None, "--format", help="Default parsing format/profile")
+        None, "--format", help="Default parsing format/profile"
+    ),
 ):
     """Save user configurations."""
     cm = ConfigManager()

@@ -19,7 +19,7 @@ class ConfigManager:
             self.config_data = {}
             self.save()
         else:
-            with open(self.config_file, 'r', encoding='utf-8') as f:
+            with open(self.config_file, "r", encoding="utf-8") as f:
                 try:
                     self.config_data = json.load(f)
                 except json.JSONDecodeError:
@@ -28,7 +28,7 @@ class ConfigManager:
 
     def save(self) -> None:
         """Save current configuration to the JSON file."""
-        with open(self.config_file, 'w', encoding='utf-8') as f:
+        with open(self.config_file, "w", encoding="utf-8") as f:
             json.dump(self.config_data, f, indent=4)
 
     def get(self, key: str, default=None) -> None:

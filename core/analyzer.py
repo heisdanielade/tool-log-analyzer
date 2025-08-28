@@ -19,7 +19,8 @@ class LogAnalyzer:
         self.config = self.config_manager.load()
 
         format_name = self.config.get("format", "simple")
-        self.parser = LogParser(format_name)
+        custom_regex = self.config.get("custom_regex")
+        self.parser = LogParser(format_name, custom_regex=custom_regex)
         self.filter = LogFilter()
         self.summary = LogSummary()
         self.exporter = Exporter()
@@ -46,7 +47,7 @@ class LogAnalyzer:
         level: Optional[str] = None,
         limit: Optional[int] = None,
         start: Optional[str] = None,
-        end: Optional[str] = None
+        end: Optional[str] = None,
     ) -> List[dict]:
         """Parse and filter logs."""
         self.handle_invalid_file_path(file_path)

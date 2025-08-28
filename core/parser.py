@@ -9,14 +9,37 @@ class LogParser:
     AVAILABLE_FORMATS = {
         "simple": r"^(?P<datetime>.*?) \[(?P<level>\w+)\] .*?: (?P<message>.*)$",
         "apache": r'^(?P<ip>\S+) - - \[(?P<datetime>[^\]]+)\] "(?P<method>\S+) (?P<path>\S+) \S+" (?P<status>\d+) \d+$',
+        "nginx": (
+            r"^(?P<ip>\S+) - (?P<user>\S+) "
+            r"\[(?P<datetime>[^\]]+)\] "
+            r'"(?P<method>\S+) (?P<path>\S+) (?P<protocol>[^"]+)" '
+            r"(?P<status>\d+) (?P<size>\d+) "
+            r'"(?P<referer>[^"]*)" '
+            r'"(?P<agent>[^"]*)"'
+        ),
     }
 
-    def __init__(self, format_name: str = "simple"):
-        if format_name not in self.AVAILABLE_FORMATS:
-            raise ValueError(
-                f"Unsupported format: '{format_name}'. Supported: {list(self.AVAILABLE_FORMATS.keys())}")
-        self.format_name = format_name
-        self.pattern = re.compile(self.AVAILABLE_FORMATS[format_name])
+    def __init__(self, format_name: str = "simple", custom_regex: Optional[str] = None):
+        """
+        Args:
+            format_name: Name of a predefined format OR "custom".
+            custom_regex: Raw regex string if using a custom format.
+        """
+        if format_name == "custom":
+            if not custom_regex:
+                raise ValueError("Custom format selected but no regex provided")
+            try:
+                self.pattern = re.compile(custom_regex)
+                self.format_name = format_name
+            except re.error as e:
+                raise ValueError(f"Invalid custom regex provided: {e}")
+        else:
+            if format_name not in self.AVAILABLE_FORMATS:
+                raise ValueError(
+                    f"Unsupported format: '{format_name}'. Supported: {list(self.AVAILABLE_FORMATS.keys())}"
+                )
+            self.format_name = format_name
+            self.pattern = re.compile(self.AVAILABLE_FORMATS[format_name])
 
     def parse_line(self, line: str) -> Optional[dict]:
         """
@@ -24,9 +47,7 @@ class LogParser:
         Returns a dict if matched, otherwise None.
         """
         match = self.pattern.match(line)
-        if match:
-            return match.groupdict()
-        return None
+        return match.groupdict() if match else None
 
     def parse_file(self, path: str) -> List[dict]:
         """
@@ -36,7 +57,7 @@ class LogParser:
         """
         parsed_entries = []
         try:
-            with open(path, 'r', encoding='utf-8') as f:
+            with open(path, "r", encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
                     if not line:

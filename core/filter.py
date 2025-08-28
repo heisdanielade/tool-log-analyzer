@@ -16,7 +16,9 @@ class LogFilter:
         """
         return [log for log in logs if log.get("level", "").lower() == level.lower()]
 
-    def filter_by_date_range(self, logs: List[dict], start: str, end: str) -> List[dict]:
+    def filter_by_date_range(
+        self, logs: List[dict], start: str, end: str
+    ) -> List[dict]:
         """
         Returns logs where the 'datetime' field is within the [start, end] range.
         Dates must be strings in the datetime format used.
@@ -30,8 +32,7 @@ class LogFilter:
         filtered = []
         for log in logs:
             try:
-                log_date = datetime.strptime(
-                    log["datetime"], self.datetime_format)
+                log_date = datetime.strptime(log["datetime"], self.datetime_format)
                 if start_date <= log_date <= end_date:
                     filtered.append(log)
             except Exception:
@@ -45,7 +46,7 @@ class LogFilter:
         level: Optional[str] = None,
         limit: Optional[int] = None,
         start: Optional[str] = None,
-        end: Optional[str] = None
+        end: Optional[str] = None,
     ) -> List[dict]:
         """Apply level and/or date filters. Returns filtered logs."""
         result = logs
