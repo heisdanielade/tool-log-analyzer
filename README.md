@@ -1,6 +1,6 @@
 # Log Analyzer CLI
 
-![Version](https://img.shields.io/badge/version-1.0.2-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
+![Version](https://img.shields.io/badge/version-1.0.1-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
 A Python command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with regex support and user-configurable preferences.
 
