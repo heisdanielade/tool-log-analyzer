@@ -42,3 +42,4 @@ class ConfigManager:
     def all(self) -> dict:
         """Return all configuration data."""
         return self.config_data
+

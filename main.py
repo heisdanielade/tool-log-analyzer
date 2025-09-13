@@ -1,8 +1,10 @@
 import sys
-import pyfiglet
-import typer
+
 import click
+import typer
+import pyfiglet
 from colorama import init, Fore
+
 from core.config import ConfigManager
 from core.analyzer import LogAnalyzer
 from core.parser import LogParser

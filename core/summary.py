@@ -1,5 +1,6 @@
 from typing import List, Dict
 from collections import defaultdict
+from datetime import datetime
 
 
 class LogSummary:
@@ -23,6 +24,15 @@ class LogSummary:
 
         return dict(counts)
 
-    # TODO: Count logs per day/hour
+    def count_logs_in_a_day(self, logs: List[dict], day: datetime) -> Dict[str, int]:
+        # TODO: Count logs per day/hour
+        """ """
+        counts = defaultdict(int)
+
+        for log in logs:
+            period = log.get("datetime", "")
+
+        return None
+
     # TODO: Add pie chart with matplotlib
     # TODO: Output results to CSV

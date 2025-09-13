@@ -1,4 +1,5 @@
 import pytest
+
 from .sample_data.log_entries import RAW_SAMPLE_LOGS
 from core.parser import LogParser
 
