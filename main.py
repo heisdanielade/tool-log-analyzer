@@ -3,7 +3,7 @@ import sys
 import click
 import typer
 import pyfiglet
-from colorama import init, Fore
+from colorama import init, Fore, Style
 
 from core.config import ConfigManager
 from core.analyzer import LogAnalyzer
@@ -28,7 +28,7 @@ def interactive():
 
     while True:
         try:
-            command = input("log-analyzer>> ").strip()
+            command = input(f"{Fore.BLUE}" + "\033[1mlog-analyzer>>\033[0m" f"{Style.RESET_ALL}").strip()
             if command in ("exit", "quit", "q"):
                 print("\nGoodbye!\n")
                 break
