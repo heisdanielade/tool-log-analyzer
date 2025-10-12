@@ -14,8 +14,8 @@ __pycache__/
 config.json
 
 # Test data folders
-src/logan_iq/sample_logs/
-src/logan_iq/exports/
+sample_logs/
+exports/
 
 # Package
 dist/
