@@ -8,7 +8,7 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 
 - Parse logs using regex patterns (default or custom)
 - Filter logs by level, date range, or limit
-- Generate summary tables (count by log level)
+- Generate summary tables
 - Export logs to CSV or JSON
 - Interactive CLI with `typer`
 - Colorful output and clean formatting
@@ -18,16 +18,25 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 
 Core flow:
 
-1. **Load Config or Use Defaults**
-   App loads user preferences and regex pattern. Falls back to a default if none is provided.
-2. Parse Log File
-   Each line in the log is converted into a dictionary with structured fields (like `datetime`, `level`, `message`, `ip`, etc.).
+1. **Load Config or Defaults**
+
+- App loads user preferences and regex pattern. Falls back to a default if none is provided.
+
+2. **Parse Log File**
+
+- Each line in the log is converted into a dictionary with structured fields (like `datetime`, `level`, `message`, `ip`, etc.).
+
 3. **Filter (Optional)**
-   Narrow results by level, date, or limit.
+
+- Narrow results by level, date, or limit.
+
 4. **Analyze or Summarize**
-   Display logs in a table or generate summary counts.
+
+- Display logs in a table or generate summary counts.
+
 5. **Export (Optional)**
-   Export results to CSV/JSON for further analysis.
+
+- Export results to CSV/JSON for further analysis.
 
 ## Available Formats
 
@@ -83,53 +92,58 @@ Or define in `config.json`:
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Linux/macOS
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
 ```
 
 3. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
 
-## Running the App
+This makes the log-analyzer CLI available globally in your environment, and any code changes in src/log_analyzer are immediately reflected without reinstalling.
 
-In interactive mode, commands are written without **_python main.py_**
+## Running the CLI
 
-- Interactive Mode
+Once installed, you can run commands directly via `log-analyzer`:
+
+- For Interactive Mode
 
 ```bash
-python main.py
+log-analyzer interactive
 log-analyzer>> analyze --file logs/access.log --format nginx
 ```
 
 - Analyze All Logs
 
 ```bash
-python main.py analyze --file path/to/logfile.log --format apache
+log-analyzer analyze --file path/to/logfile.log --format apache
 ```
 
 - Analyze with Custom Regex
 
 ```bash
-python main.py analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
+log-analyzer analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
 ```
 
 - Summary of Log Levels
 
 ```bash
-python main.py summarize --file path/to/logfile.log
+log-analyzer summarize --file path/to/logfile.log
 ```
 
 - Export Logs to File
 
 ```bash
-python main.py export --file path/to/logfile.log --output-format csv --output-path logs.csv
+log-analyzer export --file path/to/logfile.log --output-format csv --output-path logs.csv
 ```
 
 ## Configuration
 
-You can define defaults in `config.json` at the project root.
+You can define defaults in `config.json` in the `src` folder.
 
 Example with built-in format:
 
@@ -164,33 +178,38 @@ Covers:
 - Log filtering (by level, date and limit)
 - Summary generation
 - Error handling
+  Editable install ensures that tests can import modules using absolute imports like `from log_analyzer.core.analyzer import LogAnalyzer`.
 
 ## Project Structure
 
 ```
 .
-├── tool-log-analyzer/             # Core logic
-├───core/
-│       ├── parser.py
-│       ├── filter.py
-│       ├── summary.py
-│       ├── exporter.py
-│       └── config.py
-├── tests/                # Unit tests
-├── main.py               # CLI entry point
-├── requirements.txt
-└── config.json  # Optional config file
+├── src/log_analyzer/          # Core logic
+│   ├── __init__.py
+│   ├── __main__.py            # CLI entry point
+│   └── core/
+│        ├── analyzer.py
+│        ├── parser.py
+│        ├── filter.py
+│        ├── summary.py
+│        ├── exporter.py
+│        └── config.py
+│        └── helpers.py
+├── tests/                     # Unit tests
+├── config.json                # Optional configuration
+├── LICENSE
+├── README.md
+├── pyproject.toml
+└── venv/                      # Virtual environment (optional)
+
 ```
 
 ## Additional Info
 
-This project was inspired by real-world needs for log analysis tools and designed with flexibility in mind.
-It incorporates design patterns such as separation of concerns, configuration loading, and extensibility through modular classes.
-
-- `Typer` for CLI
-- `PyFiglet` for colored output
-- `Tabulate` for pretty tables
-- `Pytest` for testing
+- CLI built with `Typer`
+- Pretty tables via `Tabulate`
+- Colored output via `PyFiglet`
+- Unit testing via `Pytest`
 
 ---
 
