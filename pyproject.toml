@@ -1,0 +1,35 @@
+[project]
+name = "log_analyzer"
+version = "1.0.1"
+description = "AI-powered Python command-line tool for parsing, filtering, summarizing, and exporting log files."
+authors = [
+    { name = "heisdanielade" }
+]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+
+dependencies = [
+    "openai==2.3.0",
+    "typer==0.16.0",
+    "tabulate==0.9.0",
+    "pytest>=7.0.0",
+    "pyfiglet>=0.8.post1"
+]
+
+# CLI entry point
+[project.scripts]
+log-analyzer = "log_analyzer.__main__:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Metadata for package index / tooling
+[project.urls]
+Homepage = "https://github.com/heisdanielade/tool-log-analyzer"
+Issues = "https://github.com/heisdanielade/tool-log-analyzer/issues"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

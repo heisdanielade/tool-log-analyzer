@@ -5,7 +5,7 @@ import os
 class ConfigManager:
     """Manage user configuration settings."""
 
-    def __init__(self, config_file: str = "config.json") -> None:
+    def __init__(self, config_file: str = "src/config.json") -> None:
         self.config_file = config_file
         self.config_data = {}
         self.load()
