@@ -5,12 +5,11 @@ from colorama import init, Fore, Style
 
 from .core.config import ConfigManager
 from .core.analyzer import LogAnalyzer
-from .core.parser import LogParser
 from .core.helpers import hyperlink
 
 init(autoreset=True)
 
-app = typer.Typer(help="Log Analyzer: Parse, filter, summarize logs.")
+app = typer.Typer(help="Logan-IQ: Parse, filter, summarize logs.")
 config_app = typer.Typer(help="Manage user configurations.")
 app.add_typer(config_app, name="config")
 
@@ -27,8 +26,8 @@ DEFAULT_FILE = cm.get("default_file", None)
 # ---------------------------
 def resolve_file_and_format(file: str, parse_format: str):
     """Resolve CLI args with config defaults; CLI args override config."""
-    file = file or cm.get("default_file")
-    parse_format = parse_format or cm.get("format", "simple")
+    file = file or cm.get("default_file")  # type: ignore
+    parse_format = parse_format or cm.get("format", "simple")  # type: ignore
 
     if not file:
         typer.echo(
@@ -46,7 +45,7 @@ def resolve_file_and_format(file: str, parse_format: str):
 @app.command()
 def interactive():
     """Start interactive Log Analyzer CLI session."""
-    ascii_art = pyfiglet.figlet_format("Log Analyzer", font="slant")
+    ascii_art = pyfiglet.figlet_format("Logan-IQ", font="slant")
     print(Fore.CYAN + ascii_art)
     print(
         Fore.CYAN
@@ -58,7 +57,7 @@ def interactive():
     while True:
         try:
             command = input(
-                f"{Fore.BLUE}\033[1mlog-analyzer>> \033[0m{Style.RESET_ALL}"
+                f"{Fore.BLUE}\033[1mlogan-iq>> \033[0m{Style.RESET_ALL}"
             ).strip()
             if command in ("exit", "quit", "q", "cancel"):
                 print("\nGoodbye!\n")

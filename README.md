@@ -1,4 +1,4 @@
-# Log Analyzer CLI
+# Logan-IQ: Log Analyzer Tool
 
 ![Version](https://img.shields.io/badge/version-1.0.1-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
@@ -13,6 +13,14 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 - Interactive CLI with `typer`
 - Colorful output and clean formatting
 - Easily testable and extensible
+
+## Install
+
+```bash
+pip install logan-iq
+```
+
+This installs the CLI globally and makes the `logan-iq` command available in your terminal.
 
 ## How it Works
 
@@ -77,66 +85,39 @@ Or define in `config.json`:
 }
 ```
 
-## Setup Instructions
-
-1. Clone the repository
-
-```bash
-  git clone https://github.com/heisdanielade/tool-log-analyzer.git
-  cd tool-log-analyzer
-```
-
-2. Create a virtual environment (optional but recommended)
-
-```bash
-python -m venv venv
-# Linux/macOS
-source venv/bin/activate
-# Windows
-venv\Scripts\activate
-```
-
-3. Install dependencies in editable mode
-
-```bash
-pip install -e .
-```
-
-This makes the log-analyzer CLI available globally in your environment, and any code changes in `src/log_analyzer` are immediately reflected without reinstalling.
-
 ## Running the CLI
 
-Once installed, commands can be run directly via `log-analyzer`:
+Once installed, commands can be run directly via `logan-iq`:
 
 - For Interactive Mode
 
 ```bash
-log-analyzer interactive
-log-analyzer>> analyze --file logs/access.log --format nginx
+logan-iq interactive
+logan-iq>> analyze --file logs/access.log --format nginx
 ```
 
 - Analyze Logs
 
 ```bash
-log-analyzer analyze --file path/to/logfile.log --format apache
+logan-iq analyze --file path/to/logfile.log --format apache
 ```
 
 - Custom Regex
 
 ```bash
-log-analyzer analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
+logan-iq analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
 ```
 
 - Summarize Log Levels
 
 ```bash
-log-analyzer summarize --file path/to/logfile.log
+logan-iq summarize --file path/to/logfile.log
 ```
 
 - Export Logs
 
 ```bash
-log-analyzer export --file path/to/logfile.log --output-format csv --output-path logs.csv
+logan-iq export --file path/to/logfile.log --output-format csv --output-path logs.csv
 ```
 
 ## Configuration
@@ -181,7 +162,7 @@ pytest -s
 
 ```
 .
-├── src/log_analyzer/          # Core logic
+├── src/logan_iq/          # Core logic
 │   ├── __init__.py
 │   ├── __main__.py            # CLI entry point
 │   ├── core/
