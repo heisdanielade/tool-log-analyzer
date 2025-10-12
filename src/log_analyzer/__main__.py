@@ -1,3 +1,4 @@
+import os
 import sys
 
 import click
@@ -8,6 +9,8 @@ from colorama import init, Fore, Style
 from .core.config import ConfigManager
 from .core.analyzer import LogAnalyzer
 from .core.parser import LogParser
+
+from .core.helpers import hyperlink
 
 init(autoreset=True)
 
@@ -25,13 +28,14 @@ def interactive():
     """
     ascii_art = pyfiglet.figlet_format("Log Analyzer", font="slant")
     print(ascii_art)
+    print("By " + hyperlink("heisdanielade", "https://github.com/heisdanielade") + "\n")
 
     while True:
         try:
             command = input(
                 f"{Fore.BLUE}" + "\033[1mlog-analyzer>> \033[0m" f"{Style.RESET_ALL}"
             ).strip()
-            if command in ("exit", "quit", "q"):
+            if command in ("exit", "quit", "q", "cancel"):
                 print("\nGoodbye!\n")
                 break
             if command:
