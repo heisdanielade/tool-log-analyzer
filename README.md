@@ -10,11 +10,13 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 - Filter logs by level, date range, or limit
 - Generate summary tables
 - Export logs to CSV or JSON
-- Interactive CLI with `typer`
+- Interactive CLI
 - Colorful output and clean formatting
 - Easily testable and extensible
 
 ## Install
+
+Package is available on [PyPI](https://pypi.org/project/logan-iq/1.0.1/)
 
 ```bash
 pip install logan-iq
