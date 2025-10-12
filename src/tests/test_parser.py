@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from .sample_data.log_entries import RAW_SAMPLE_LOGS
@@ -47,7 +49,7 @@ def test_parse_file_success_with_simple_format(
     Parse file correctly using default format (simple) and
     return List containing dicts of parsed log entries.
     """
-    file = "tests/sample_data/raw_log_file.log"
+    file = os.path.join(os.path.dirname(__file__), "sample_data", "raw_log_file.log")
     result = log_parser.parse_file(file)
 
     print(f"parse_file_success_result: {result}\n")
