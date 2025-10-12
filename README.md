@@ -19,24 +19,23 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 Core flow:
 
 1. **Load Config or Defaults**
-
-- App loads user preferences and regex pattern. Falls back to a default if none is provided.
+   App loads user preferences and regex pattern. Falls back to a default if none is provided.
 
 2. **Parse Log File**
 
-- Each line in the log is converted into a dictionary with structured fields (like `datetime`, `level`, `message`, `ip`, etc.).
+Each line in the log is converted into a dictionary with structured fields (like `datetime`, `level`, `message`, `ip`, etc.).
 
 3. **Filter (Optional)**
 
-- Narrow results by level, date, or limit.
+Narrow results by level, date, or limit.
 
 4. **Analyze or Summarize**
 
-- Display logs in a table or generate summary counts.
+Display logs in a table or generate summary counts.
 
 5. **Export (Optional)**
 
-- Export results to CSV/JSON for further analysis.
+Export results to CSV/JSON for further analysis.
 
 ## Available Formats
 
@@ -104,7 +103,7 @@ venv\Scripts\activate
 pip install -e .
 ```
 
-This makes the log-analyzer CLI available globally in your environment, and any code changes in src/log_analyzer are immediately reflected without reinstalling.
+This makes the log-analyzer CLI available globally in your environment, and any code changes in `src/log_analyzer` are immediately reflected without reinstalling.
 
 ## Running the CLI
 
