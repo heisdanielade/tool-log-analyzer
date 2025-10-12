@@ -4,6 +4,11 @@
 
 A Python command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with regex support and user-configurable preferences.
 
+#### ⚠️ Notice About Version 1.0.1
+
+Version **1.0.1** contains unintended scripts and should **not be used**.  
+Please use **1.0.2 or later** for correct functionality.
+
 ## Features
 
 - Parse logs using regex patterns (default or custom)
