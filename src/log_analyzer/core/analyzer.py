@@ -3,11 +3,11 @@ from typing import List, Dict, Optional
 
 from colorama import init, Fore
 
-from core.config import ConfigManager
-from core.parser import LogParser
-from core.filter import LogFilter
-from core.summarizer import LogSummarizer
-from core.exporter import Exporter
+from .config import ConfigManager
+from .parser import LogParser
+from .filter import LogFilter
+from .summarizer import LogSummarizer
+from .exporter import Exporter
 
 
 init(autoreset=True)
@@ -16,7 +16,7 @@ init(autoreset=True)
 class LogAnalyzer:
     """Analyzer class to associate CLI command with designated feature."""
 
-    def __init__(self, config_file: str = "config.json"):
+    def __init__(self, config_file: str = "src/config.json"):
         self.config_manager = ConfigManager(config_file)
         self.config = self.config_manager.load()
 

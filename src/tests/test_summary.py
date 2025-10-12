@@ -2,7 +2,7 @@ import pytest
 
 from .sample_data.log_entries import PARSED_SAMPLE_LOGS
 
-from core.summarizer import LogSummarizer
+from log_analyzer.core.summarizer import LogSummarizer
 
 
 @pytest.fixture

@@ -5,9 +5,9 @@ import typer
 import pyfiglet
 from colorama import init, Fore, Style
 
-from core.config import ConfigManager
-from core.analyzer import LogAnalyzer
-from core.parser import LogParser
+from .core.config import ConfigManager
+from .core.analyzer import LogAnalyzer
+from .core.parser import LogParser
 
 init(autoreset=True)
 

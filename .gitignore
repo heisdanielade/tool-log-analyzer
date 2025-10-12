@@ -7,9 +7,15 @@ __pycache__/
 # VSCode settings
 .vscode/
 
+# Env
+.env
+
 # Test config
 config.json
 
 # Test data folders
-sample_logs/
-exports/
+src/log_analyzer/sample_logs/
+src/log_analyzer/exports/
+
+# Package
+*.egg-info/
