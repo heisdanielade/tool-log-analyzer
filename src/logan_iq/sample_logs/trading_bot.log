@@ -1,0 +1,126 @@
+2025-07-05 14:06:09,890 [INFO] core.api_client: (i) Hello from api_client.py logger
+2025-07-05 14:22:27,552 [INFO] test.mock_api_client: [MOCK] Fetched 1 instruments.
+2025-07-05 14:23:34,865 [INFO] test.mock_api_client: [MOCK] Recieved RFQ mock-rfq-id at price 20293.0
+2025-07-05 14:23:36,166 [INFO] test.mock_api_client: [MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='0.543', base_quantity='0.543', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')
+-------2025-07-08 12:03:27,797 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:06:50,789 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:06:50,790 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:06:50,878 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:07:11,120 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:07:11,121 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:07:11,194 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:10:03,527 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:10:03,529 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:10:03,606 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:25:11,338 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:25:11,340 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:25:11,446 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:27:37,720 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:27:37,721 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:27:37,804 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:27:41,555 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:27:41,556 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:27:41,634 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:27:48,428 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:27:48,428 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:27:48,504 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:28:56,932 [INFO] tests.mock_api_client: [MOCK] Fetched 1 instruments.
+2025-07-08 12:29:01,412 [INFO] tests.mock_api_client: [MOCK] Recieved RFQ mock-rfq-id at price 20293.0
+2025-07-08 12:29:02,871 [INFO] tests.mock_api_client: [MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='0.292', base_quantity='0.292', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')
+2025-07-08 12:29:20,789 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:29:20,790 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:29:20,867 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:30:16,915 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:30:16,915 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:30:16,983 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:31:15,259 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:31:15,260 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:31:15,336 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:31:53,876 [ERROR] core.api_client: Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+2025-07-08 12:31:53,877 [ERROR] core.cli: Balance fetch failed: Failed to fetch balance
+2025-07-08 12:31:53,956 [ERROR] core.api_client: Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+2025-07-08 12:34:43,686 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:34:43,833 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:36:09,041 [INFO] core.api_client: Recieved RFQ 96b68bf2-78cf-4299-9d2a-27d97f416fe0 at price 108783.0
+2025-07-08 12:36:14,134 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:36:14,134 [ERROR] core.api_client: Error placing order: Object of type datetime is not JSON serializable
+2025-07-08 12:38:57,505 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:38:57,629 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:39:24,241 [INFO] core.api_client: Recieved RFQ f926ebe7-ee52-43b5-beb0-3d75e3727955 at price 108922.0
+2025-07-08 12:39:28,493 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:39:28,639 [ERROR] core.api_client: Error placing order: float() argument must be a string or a real number, not 'NoneType'
+2025-07-08 12:48:02,278 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:48:02,410 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:48:18,540 [INFO] core.api_client: Recieved RFQ 3fb4f6c4-81bb-4cb2-9001-72833b40bad6 at price 108890.0
+2025-07-08 12:48:20,921 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:48:21,065 [INFO] core.api_client: Order placed: 1075f9dc-5be9-11f0-aedb-2d53a56693fd
+2025-07-08 12:48:23,020 [ERROR] core.api_client: Error fetching order status for 1075f9dc-5be9-11f0-aedb-2d53a56693fd: 'list' object has no attribute 'get'
+2025-07-08 12:53:14,003 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:53:14,128 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:53:35,722 [INFO] core.api_client: Recieved RFQ 4be58e77-c252-4d20-bc7c-47d04e41f816 at price 108910.0
+2025-07-08 12:53:41,075 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:53:41,229 [INFO] core.api_client: Order placed: cf4bbce2-5be9-11f0-9e1c-8db41a8fed7a
+2025-07-08 12:53:42,821 [INFO] core.api_client: Fetched status for order Order(order_id='cf4bbce2-5be9-11f0-9e1c-8db41a8fed7a', client_order_id='<function uuid4 at 0x00000281332CE980>', quantity=0.3, base_quantity=0.3, side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108910.0, executed_price=108910.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='cf4be3f3-5be9-11f0-9e1c-8db41a8fed7a', origin='rest:core', rfq_id=None, created='2025-07-08T10:53:41.185998Z', price=108910.0, quantity=0.3, base_quantity=0.3, order='cf4bbce2-5be9-11f0-9e1c-8db41a8fed7a', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T10:53:41.185998Z')
+2025-07-08 12:53:42,935 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:54:08,495 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:54:08,596 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:54:32,198 [INFO] core.api_client: Recieved RFQ 8820f1f4-3f3f-48a6-92b3-2f5ff291dce3 at price 108910.0
+2025-07-08 12:54:39,858 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:54:40,018 [INFO] core.api_client: Order placed: f2543da7-5be9-11f0-aedb-2d53a56693fd
+2025-07-08 12:54:42,738 [INFO] core.api_client: Fetched status for order Order(order_id='f2543da7-5be9-11f0-aedb-2d53a56693fd', client_order_id='<function uuid4 at 0x00000197C95A6980>', quantity=0.81, base_quantity=0.81, side='sell', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108910.0, executed_price=108910.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='f25464b8-5be9-11f0-aedb-2d53a56693fd', origin='rest:core', rfq_id=None, created='2025-07-08T10:54:39.961950Z', price=108910.0, quantity=0.81, base_quantity=0.81, order='f2543da7-5be9-11f0-aedb-2d53a56693fd', side='sell', executing_unit='risk-adding-strategy')], created='2025-07-08T10:54:39.961950Z')
+2025-07-08 12:54:43,030 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:54:58,643 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:54:58,769 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:55:13,306 [INFO] core.api_client: Recieved RFQ 36743454-48d4-488e-9f8b-e4ece03f7458 at price 108911.0
+2025-07-08 12:55:18,073 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:55:18,189 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:55:26,163 [INFO] core.api_client: Recieved RFQ ca895cb0-88e0-4f4a-8917-64a7e1574ade at price 108983.0
+2025-07-08 12:55:29,791 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:55:29,951 [INFO] core.api_client: Order placed: 1017b7d5-5bea-11f0-aedb-2d53a56693fd
+2025-07-08 12:55:31,459 [INFO] core.api_client: Fetched status for order Order(order_id='1017b7d5-5bea-11f0-aedb-2d53a56693fd', client_order_id='<function uuid4 at 0x000001E3D66E6980>', quantity=3.0, base_quantity=3.0, side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108983.0, executed_price=108983.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='101805f6-5bea-11f0-aedb-2d53a56693fd', origin='rest:core', rfq_id=None, created='2025-07-08T10:55:29.897531Z', price=108983.0, quantity=3.0, base_quantity=3.0, order='1017b7d5-5bea-11f0-aedb-2d53a56693fd', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T10:55:29.897531Z')
+2025-07-08 12:55:31,608 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:55:51,056 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:55:51,202 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:56:05,836 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:56:06,096 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:56:18,649 [INFO] core.api_client: Recieved RFQ 9a36a89d-aa4c-41a8-a2ce-fd3fabedc70b at price 108856.0
+2025-07-08 12:56:23,324 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:56:23,529 [ERROR] core.api_client: Error placing order: float() argument must be a string or a real number, not 'NoneType'
+2025-07-08 12:56:51,275 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:56:51,409 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:57:03,093 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:57:03,237 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 12:57:09,438 [INFO] core.api_client: Recieved RFQ 7b335406-eac1-41c5-a4e9-8b1e964077cc at price 108872.0
+2025-07-08 12:57:12,180 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:57:12,328 [INFO] core.api_client: Order placed: 4d1ebc87-5bea-11f0-9e1c-8db41a8fed7a
+2025-07-08 12:57:21,182 [INFO] core.api_client: Fetched status for order Order(order_id='4d1ebc87-5bea-11f0-9e1c-8db41a8fed7a', client_order_id='<function uuid4 at 0x00000216C0B56980>', quantity=3.0, base_quantity=3.0, side='sell', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108872.0, executed_price=108872.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='4d1f0aa8-5bea-11f0-9e1c-8db41a8fed7a', origin='rest:core', rfq_id=None, created='2025-07-08T10:57:12.284651Z', price=108872.0, quantity=3.0, base_quantity=3.0, order='4d1ebc87-5bea-11f0-9e1c-8db41a8fed7a', side='sell', executing_unit='risk-adding-strategy')], created='2025-07-08T10:57:12.284651Z')
+2025-07-08 12:57:21,351 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:58:30,780 [INFO] core.api_client: Fetched account balance.
+2025-07-08 12:58:30,978 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 13:00:00,540 [INFO] core.api_client: Recieved RFQ 516a03a4-02ad-4ea2-8610-e95422c61cc8 at price 108928.0
+2025-07-08 13:00:16,873 [ERROR] core.api_client: Error fetching balance: HTTPSConnectionPool(host='api.uat.b2c2.net', port=443): Read timed out. (read timeout=10)
+2025-07-08 13:04:00,853 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:04:00,966 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 13:04:32,537 [INFO] core.api_client: Recieved RFQ 71cf1286-3618-40c6-b7fb-052a73480d1a at price 2.2934
+2025-07-08 13:05:52,776 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:05:52,917 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 13:06:03,248 [INFO] core.api_client: Recieved RFQ eb90ad78-c714-4f64-869b-deecf53c7ec5 at price 2.2987
+2025-07-08 13:06:12,123 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:06:12,277 [INFO] core.api_client: Order placed: 8ef3f4b2-5beb-11f0-aedb-2d53a56693fd
+2025-07-08 13:06:14,896 [INFO] core.api_client: Fetched status for order Order(order_id='8ef3f4b2-5beb-11f0-aedb-2d53a56693fd', client_order_id='<function uuid4 at 0x000001BE33366980>', quantity=22.7, base_quantity=22.7, side='buy', instrument='XRPUST.SPOT', currency='XRP', order_type='FOK', price=2.2987, executed_price=2.2987, executing_unit='risk-adding-strategy', trades=[Trade(instrument='XRPUST.SPOT', currency='XRP', trade_id='8ef442d3-5beb-11f0-aedb-2d53a56693fd', origin='rest:core', rfq_id=None, created='2025-07-08T11:06:12.230706Z', price=2.2987, quantity=22.7, base_quantity=22.7, order='8ef3f4b2-5beb-11f0-aedb-2d53a56693fd', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T11:06:12.230706Z')
+2025-07-08 13:06:15,017 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:07:49,312 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:07:49,457 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 13:08:44,258 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:08:44,402 [INFO] core.api_client: Fetched 5 instruments.
+2025-07-08 13:09:33,664 [INFO] core.api_client: Recieved RFQ 1d5c9563-ecdc-4637-8d0b-a9ede8231f4d at price 2.2916
+2025-07-08 13:09:37,137 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:09:37,288 [INFO] core.api_client: Order placed: 0925ffe6-5bec-11f0-9e1c-8db41a8fed7a
+2025-07-08 13:09:38,899 [INFO] core.api_client: Fetched status for order Order(order_id='0925ffe6-5bec-11f0-9e1c-8db41a8fed7a', client_order_id='<function uuid4 at 0x0000017D180E68E0>', quantity=50.0, base_quantity=50.0, side='buy', instrument='XRPUST.SPOT', currency='XRP', order_type='FOK', price=2.2916, executed_price=2.2909, executing_unit='risk-adding-strategy', trades=[Trade(instrument='XRPUST.SPOT', currency='XRP', trade_id='09264e07-5bec-11f0-9e1c-8db41a8fed7a', origin='rest:core', rfq_id=None, created='2025-07-08T11:09:37.240487Z', price=2.2909, quantity=50.0, base_quantity=50.0, order='0925ffe6-5bec-11f0-9e1c-8db41a8fed7a', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T11:09:37.240487Z')
+2025-07-08 13:09:39,027 [INFO] core.api_client: Fetched account balance.
+2025-07-08 13:12:24,371 [INFO] tests.mock_api_client: [MOCK] Fetched 1 instruments.
+2025-07-08 13:12:29,624 [INFO] tests.mock_api_client: [MOCK] Recieved RFQ mock-rfq-id at price 20293.0
+2025-07-08 13:12:30,937 [INFO] tests.mock_api_client: [MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='1.0', base_quantity='1.0', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')
+2025-07-08 15:52:48,327 [INFO] tests.mock_api_client: [MOCK] Fetched 1 instruments.
+2025-07-08 15:52:55,092 [INFO] tests.mock_api_client: [MOCK] Recieved RFQ mock-rfq-id at price 20293.0
+2025-07-08 15:52:58,044 [INFO] tests.mock_api_client: [MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='1.0', base_quantity='1.0', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')

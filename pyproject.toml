@@ -1,5 +1,5 @@
 [project]
-name = "log_analyzer"
+name = "logan_iq"
 version = "1.0.1"
 description = "Python command-line tool for parsing, filtering, summarizing, and exporting log files."
 authors = [
@@ -20,7 +20,7 @@ dependencies = [
 
 # CLI entry point
 [project.scripts]
-log-analyzer = "log_analyzer.__main__:app"
+logan-iq = "logan_iq.__main__:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]

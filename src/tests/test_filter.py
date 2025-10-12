@@ -1,7 +1,7 @@
 import pytest
 
 from .sample_data.log_entries import PARSED_SAMPLE_LOGS
-from log_analyzer.core.filter import LogFilter
+from logan_iq.core.filter import LogFilter
 
 
 @pytest.fixture

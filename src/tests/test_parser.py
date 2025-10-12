@@ -3,7 +3,7 @@ import os
 import pytest
 
 from .sample_data.log_entries import RAW_SAMPLE_LOGS
-from log_analyzer.core.parser import LogParser
+from logan_iq.core.parser import LogParser
 
 
 @pytest.fixture

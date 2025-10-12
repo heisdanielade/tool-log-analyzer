@@ -1,0 +1,40 @@
+datetime,level,message
+"-------2025-07-08 12:03:27,797",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:06:50,789",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:06:50,790",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:06:50,878",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:07:11,120",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:07:11,121",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:07:11,194",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:10:03,527",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:10:03,529",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:10:03,606",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:25:11,338",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:25:11,340",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:25:11,446",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:27:37,720",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:27:37,721",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:27:37,804",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:27:41,555",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:27:41,556",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:27:41,634",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:27:48,428",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:27:48,428",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:27:48,504",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:29:20,789",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:29:20,790",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:29:20,867",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:30:16,915",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:30:16,915",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:30:16,983",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:31:15,259",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:31:15,260",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:31:15,336",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:31:53,876",ERROR,Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/
+"2025-07-08 12:31:53,877",ERROR,Balance fetch failed: Failed to fetch balance
+"2025-07-08 12:31:53,956",ERROR,Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/
+"2025-07-08 12:36:14,134",ERROR,Error placing order: Object of type datetime is not JSON serializable
+"2025-07-08 12:39:28,639",ERROR,"Error placing order: float() argument must be a string or a real number, not 'NoneType'"
+"2025-07-08 12:48:23,020",ERROR,Error fetching order status for 1075f9dc-5be9-11f0-aedb-2d53a56693fd: 'list' object has no attribute 'get'
+"2025-07-08 12:56:23,529",ERROR,"Error placing order: float() argument must be a string or a real number, not 'NoneType'"
+"2025-07-08 13:00:16,873",ERROR,"Error fetching balance: HTTPSConnectionPool(host='api.uat.b2c2.net', port=443): Read timed out. (read timeout=10)"

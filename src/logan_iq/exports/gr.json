@@ -1,0 +1,632 @@
+[
+    {
+        "datetime": "2025-07-05 14:06:09,890",
+        "level": "INFO",
+        "message": "(i) Hello from api_client.py logger"
+    },
+    {
+        "datetime": "2025-07-05 14:22:27,552",
+        "level": "INFO",
+        "message": "[MOCK] Fetched 1 instruments."
+    },
+    {
+        "datetime": "2025-07-05 14:23:34,865",
+        "level": "INFO",
+        "message": "[MOCK] Recieved RFQ mock-rfq-id at price 20293.0"
+    },
+    {
+        "datetime": "2025-07-05 14:23:36,166",
+        "level": "INFO",
+        "message": "[MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='0.543', base_quantity='0.543', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')"
+    },
+    {
+        "datetime": "-------2025-07-08 12:03:27,797",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:06:50,789",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:06:50,790",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:06:50,878",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:07:11,120",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:07:11,121",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:07:11,194",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:10:03,527",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:10:03,529",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:10:03,606",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:25:11,338",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:25:11,340",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:25:11,446",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:27:37,720",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:27:37,721",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:27:37,804",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:27:41,555",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:27:41,556",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:27:41,634",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:27:48,428",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:27:48,428",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:27:48,504",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:28:56,932",
+        "level": "INFO",
+        "message": "[MOCK] Fetched 1 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:29:01,412",
+        "level": "INFO",
+        "message": "[MOCK] Recieved RFQ mock-rfq-id at price 20293.0"
+    },
+    {
+        "datetime": "2025-07-08 12:29:02,871",
+        "level": "INFO",
+        "message": "[MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='0.292', base_quantity='0.292', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')"
+    },
+    {
+        "datetime": "2025-07-08 12:29:20,789",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:29:20,790",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:29:20,867",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:30:16,915",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:30:16,915",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:30:16,983",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:31:15,259",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:31:15,260",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:31:15,336",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:31:53,876",
+        "level": "ERROR",
+        "message": "Error fetching balance: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/balance/"
+    },
+    {
+        "datetime": "2025-07-08 12:31:53,877",
+        "level": "ERROR",
+        "message": "Balance fetch failed: Failed to fetch balance"
+    },
+    {
+        "datetime": "2025-07-08 12:31:53,956",
+        "level": "ERROR",
+        "message": "Error fetching instruments: 403 Client Error: Forbidden for url: https://api.uat.b2c2.net/instruments/"
+    },
+    {
+        "datetime": "2025-07-08 12:34:43,686",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:34:43,833",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:36:09,041",
+        "level": "INFO",
+        "message": "Recieved RFQ 96b68bf2-78cf-4299-9d2a-27d97f416fe0 at price 108783.0"
+    },
+    {
+        "datetime": "2025-07-08 12:36:14,134",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:36:14,134",
+        "level": "ERROR",
+        "message": "Error placing order: Object of type datetime is not JSON serializable"
+    },
+    {
+        "datetime": "2025-07-08 12:38:57,505",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:38:57,629",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:39:24,241",
+        "level": "INFO",
+        "message": "Recieved RFQ f926ebe7-ee52-43b5-beb0-3d75e3727955 at price 108922.0"
+    },
+    {
+        "datetime": "2025-07-08 12:39:28,493",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:39:28,639",
+        "level": "ERROR",
+        "message": "Error placing order: float() argument must be a string or a real number, not 'NoneType'"
+    },
+    {
+        "datetime": "2025-07-08 12:48:02,278",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:48:02,410",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:48:18,540",
+        "level": "INFO",
+        "message": "Recieved RFQ 3fb4f6c4-81bb-4cb2-9001-72833b40bad6 at price 108890.0"
+    },
+    {
+        "datetime": "2025-07-08 12:48:20,921",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:48:21,065",
+        "level": "INFO",
+        "message": "Order placed: 1075f9dc-5be9-11f0-aedb-2d53a56693fd"
+    },
+    {
+        "datetime": "2025-07-08 12:48:23,020",
+        "level": "ERROR",
+        "message": "Error fetching order status for 1075f9dc-5be9-11f0-aedb-2d53a56693fd: 'list' object has no attribute 'get'"
+    },
+    {
+        "datetime": "2025-07-08 12:53:14,003",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:53:14,128",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:53:35,722",
+        "level": "INFO",
+        "message": "Recieved RFQ 4be58e77-c252-4d20-bc7c-47d04e41f816 at price 108910.0"
+    },
+    {
+        "datetime": "2025-07-08 12:53:41,075",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:53:41,229",
+        "level": "INFO",
+        "message": "Order placed: cf4bbce2-5be9-11f0-9e1c-8db41a8fed7a"
+    },
+    {
+        "datetime": "2025-07-08 12:53:42,821",
+        "level": "INFO",
+        "message": "Fetched status for order Order(order_id='cf4bbce2-5be9-11f0-9e1c-8db41a8fed7a', client_order_id='<function uuid4 at 0x00000281332CE980>', quantity=0.3, base_quantity=0.3, side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108910.0, executed_price=108910.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='cf4be3f3-5be9-11f0-9e1c-8db41a8fed7a', origin='rest:core', rfq_id=None, created='2025-07-08T10:53:41.185998Z', price=108910.0, quantity=0.3, base_quantity=0.3, order='cf4bbce2-5be9-11f0-9e1c-8db41a8fed7a', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T10:53:41.185998Z')"
+    },
+    {
+        "datetime": "2025-07-08 12:53:42,935",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:54:08,495",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:54:08,596",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:54:32,198",
+        "level": "INFO",
+        "message": "Recieved RFQ 8820f1f4-3f3f-48a6-92b3-2f5ff291dce3 at price 108910.0"
+    },
+    {
+        "datetime": "2025-07-08 12:54:39,858",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:54:40,018",
+        "level": "INFO",
+        "message": "Order placed: f2543da7-5be9-11f0-aedb-2d53a56693fd"
+    },
+    {
+        "datetime": "2025-07-08 12:54:42,738",
+        "level": "INFO",
+        "message": "Fetched status for order Order(order_id='f2543da7-5be9-11f0-aedb-2d53a56693fd', client_order_id='<function uuid4 at 0x00000197C95A6980>', quantity=0.81, base_quantity=0.81, side='sell', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108910.0, executed_price=108910.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='f25464b8-5be9-11f0-aedb-2d53a56693fd', origin='rest:core', rfq_id=None, created='2025-07-08T10:54:39.961950Z', price=108910.0, quantity=0.81, base_quantity=0.81, order='f2543da7-5be9-11f0-aedb-2d53a56693fd', side='sell', executing_unit='risk-adding-strategy')], created='2025-07-08T10:54:39.961950Z')"
+    },
+    {
+        "datetime": "2025-07-08 12:54:43,030",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:54:58,643",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:54:58,769",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:55:13,306",
+        "level": "INFO",
+        "message": "Recieved RFQ 36743454-48d4-488e-9f8b-e4ece03f7458 at price 108911.0"
+    },
+    {
+        "datetime": "2025-07-08 12:55:18,073",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:55:18,189",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:55:26,163",
+        "level": "INFO",
+        "message": "Recieved RFQ ca895cb0-88e0-4f4a-8917-64a7e1574ade at price 108983.0"
+    },
+    {
+        "datetime": "2025-07-08 12:55:29,791",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:55:29,951",
+        "level": "INFO",
+        "message": "Order placed: 1017b7d5-5bea-11f0-aedb-2d53a56693fd"
+    },
+    {
+        "datetime": "2025-07-08 12:55:31,459",
+        "level": "INFO",
+        "message": "Fetched status for order Order(order_id='1017b7d5-5bea-11f0-aedb-2d53a56693fd', client_order_id='<function uuid4 at 0x000001E3D66E6980>', quantity=3.0, base_quantity=3.0, side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108983.0, executed_price=108983.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='101805f6-5bea-11f0-aedb-2d53a56693fd', origin='rest:core', rfq_id=None, created='2025-07-08T10:55:29.897531Z', price=108983.0, quantity=3.0, base_quantity=3.0, order='1017b7d5-5bea-11f0-aedb-2d53a56693fd', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T10:55:29.897531Z')"
+    },
+    {
+        "datetime": "2025-07-08 12:55:31,608",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:55:51,056",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:55:51,202",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:56:05,836",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:56:06,096",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:56:18,649",
+        "level": "INFO",
+        "message": "Recieved RFQ 9a36a89d-aa4c-41a8-a2ce-fd3fabedc70b at price 108856.0"
+    },
+    {
+        "datetime": "2025-07-08 12:56:23,324",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:56:23,529",
+        "level": "ERROR",
+        "message": "Error placing order: float() argument must be a string or a real number, not 'NoneType'"
+    },
+    {
+        "datetime": "2025-07-08 12:56:51,275",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:56:51,409",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:57:03,093",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:57:03,237",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 12:57:09,438",
+        "level": "INFO",
+        "message": "Recieved RFQ 7b335406-eac1-41c5-a4e9-8b1e964077cc at price 108872.0"
+    },
+    {
+        "datetime": "2025-07-08 12:57:12,180",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:57:12,328",
+        "level": "INFO",
+        "message": "Order placed: 4d1ebc87-5bea-11f0-9e1c-8db41a8fed7a"
+    },
+    {
+        "datetime": "2025-07-08 12:57:21,182",
+        "level": "INFO",
+        "message": "Fetched status for order Order(order_id='4d1ebc87-5bea-11f0-9e1c-8db41a8fed7a', client_order_id='<function uuid4 at 0x00000216C0B56980>', quantity=3.0, base_quantity=3.0, side='sell', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price=108872.0, executed_price=108872.0, executing_unit='risk-adding-strategy', trades=[Trade(instrument='BTCUSD.SPOT', currency='BTC', trade_id='4d1f0aa8-5bea-11f0-9e1c-8db41a8fed7a', origin='rest:core', rfq_id=None, created='2025-07-08T10:57:12.284651Z', price=108872.0, quantity=3.0, base_quantity=3.0, order='4d1ebc87-5bea-11f0-9e1c-8db41a8fed7a', side='sell', executing_unit='risk-adding-strategy')], created='2025-07-08T10:57:12.284651Z')"
+    },
+    {
+        "datetime": "2025-07-08 12:57:21,351",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:58:30,780",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 12:58:30,978",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 13:00:00,540",
+        "level": "INFO",
+        "message": "Recieved RFQ 516a03a4-02ad-4ea2-8610-e95422c61cc8 at price 108928.0"
+    },
+    {
+        "datetime": "2025-07-08 13:00:16,873",
+        "level": "ERROR",
+        "message": "Error fetching balance: HTTPSConnectionPool(host='api.uat.b2c2.net', port=443): Read timed out. (read timeout=10)"
+    },
+    {
+        "datetime": "2025-07-08 13:04:00,853",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:04:00,966",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 13:04:32,537",
+        "level": "INFO",
+        "message": "Recieved RFQ 71cf1286-3618-40c6-b7fb-052a73480d1a at price 2.2934"
+    },
+    {
+        "datetime": "2025-07-08 13:05:52,776",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:05:52,917",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 13:06:03,248",
+        "level": "INFO",
+        "message": "Recieved RFQ eb90ad78-c714-4f64-869b-deecf53c7ec5 at price 2.2987"
+    },
+    {
+        "datetime": "2025-07-08 13:06:12,123",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:06:12,277",
+        "level": "INFO",
+        "message": "Order placed: 8ef3f4b2-5beb-11f0-aedb-2d53a56693fd"
+    },
+    {
+        "datetime": "2025-07-08 13:06:14,896",
+        "level": "INFO",
+        "message": "Fetched status for order Order(order_id='8ef3f4b2-5beb-11f0-aedb-2d53a56693fd', client_order_id='<function uuid4 at 0x000001BE33366980>', quantity=22.7, base_quantity=22.7, side='buy', instrument='XRPUST.SPOT', currency='XRP', order_type='FOK', price=2.2987, executed_price=2.2987, executing_unit='risk-adding-strategy', trades=[Trade(instrument='XRPUST.SPOT', currency='XRP', trade_id='8ef442d3-5beb-11f0-aedb-2d53a56693fd', origin='rest:core', rfq_id=None, created='2025-07-08T11:06:12.230706Z', price=2.2987, quantity=22.7, base_quantity=22.7, order='8ef3f4b2-5beb-11f0-aedb-2d53a56693fd', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T11:06:12.230706Z')"
+    },
+    {
+        "datetime": "2025-07-08 13:06:15,017",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:07:49,312",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:07:49,457",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 13:08:44,258",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:08:44,402",
+        "level": "INFO",
+        "message": "Fetched 5 instruments."
+    },
+    {
+        "datetime": "2025-07-08 13:09:33,664",
+        "level": "INFO",
+        "message": "Recieved RFQ 1d5c9563-ecdc-4637-8d0b-a9ede8231f4d at price 2.2916"
+    },
+    {
+        "datetime": "2025-07-08 13:09:37,137",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:09:37,288",
+        "level": "INFO",
+        "message": "Order placed: 0925ffe6-5bec-11f0-9e1c-8db41a8fed7a"
+    },
+    {
+        "datetime": "2025-07-08 13:09:38,899",
+        "level": "INFO",
+        "message": "Fetched status for order Order(order_id='0925ffe6-5bec-11f0-9e1c-8db41a8fed7a', client_order_id='<function uuid4 at 0x0000017D180E68E0>', quantity=50.0, base_quantity=50.0, side='buy', instrument='XRPUST.SPOT', currency='XRP', order_type='FOK', price=2.2916, executed_price=2.2909, executing_unit='risk-adding-strategy', trades=[Trade(instrument='XRPUST.SPOT', currency='XRP', trade_id='09264e07-5bec-11f0-9e1c-8db41a8fed7a', origin='rest:core', rfq_id=None, created='2025-07-08T11:09:37.240487Z', price=2.2909, quantity=50.0, base_quantity=50.0, order='0925ffe6-5bec-11f0-9e1c-8db41a8fed7a', side='buy', executing_unit='risk-adding-strategy')], created='2025-07-08T11:09:37.240487Z')"
+    },
+    {
+        "datetime": "2025-07-08 13:09:39,027",
+        "level": "INFO",
+        "message": "Fetched account balance."
+    },
+    {
+        "datetime": "2025-07-08 13:12:24,371",
+        "level": "INFO",
+        "message": "[MOCK] Fetched 1 instruments."
+    },
+    {
+        "datetime": "2025-07-08 13:12:29,624",
+        "level": "INFO",
+        "message": "[MOCK] Recieved RFQ mock-rfq-id at price 20293.0"
+    },
+    {
+        "datetime": "2025-07-08 13:12:30,937",
+        "level": "INFO",
+        "message": "[MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='1.0', base_quantity='1.0', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')"
+    },
+    {
+        "datetime": "2025-07-08 15:52:48,327",
+        "level": "INFO",
+        "message": "[MOCK] Fetched 1 instruments."
+    },
+    {
+        "datetime": "2025-07-08 15:52:55,092",
+        "level": "INFO",
+        "message": "[MOCK] Recieved RFQ mock-rfq-id at price 20293.0"
+    },
+    {
+        "datetime": "2025-07-08 15:52:58,044",
+        "level": "INFO",
+        "message": "[MOCK] Order placed: Order(order_id='mock-order-id', client_order_id='mock-client-order-id', quantity='1.0', base_quantity='1.0', side='buy', instrument='BTCUSD.SPOT', currency='BTC', order_type='FOK', price='20293.0', executed_price='20293.0', executing_unit='mock-unit', trades=[], created='2025-07-05T00:00:00Z')"
+    }
+]
