@@ -18,29 +18,28 @@ A Python command-line tool for parsing, filtering, summarizing, and exporting lo
 
 Core flow:
 
-1. **Load Config or Defaults**
-   App loads user preferences and regex pattern. Falls back to a default if none is provided.
+1. **Load Config or Defaults:**
+   Loads user preferences from config.json if it exists. CLI arguments always override the config file. If no file is provided and no config exists, the app prompts the user to specify a file.
+2. **Parse Log File:**
 
-2. **Parse Log File**
+Each log line is converted into a structured dictionary with fields like `datetime`, `level`, `message`,and optionally `ip` or other fields depending on the format.
 
-Each line in the log is converted into a dictionary with structured fields (like `datetime`, `level`, `message`, `ip`, etc.).
+3. **Filter (Optional):**
 
-3. **Filter (Optional)**
+Narrow results by log level, date range, or limit the number of entries displayed.
 
-Narrow results by level, date, or limit.
+4. **Analyze or Summarize:**
 
-4. **Analyze or Summarize**
+Display logs in a terminal table or generate summary reports.
 
-Display logs in a table or generate summary counts.
+5. **Export (Optional):**
 
-5. **Export (Optional)**
-
-Export results to CSV/JSON for further analysis.
+Export filtered data to CSV or JSON for further analysis.
 
 ## Available Formats
 
-This tool comes with a few pre-configured log formats out of the box.
-You can also supply your own regex directly via CLI or in `config.json`.
+You can supply your own regex directly via CLI or in `config.json`.
+Or use the Built-in formats:
 
 - **simple** → generic logs with `datetime`, `level` and `message`
 
@@ -60,7 +59,7 @@ You can also supply your own regex directly via CLI or in `config.json`.
 192.100.1.1 - - [28/Aug/2025:12:34:56 +0000] "GET /index.html HTTP/1.1" 200 1024 "http://example.com" "Mozilla/5.0"
 ```
 
-- **custom (user-defined regex)** → Any custom format
+- **custom** → Any user-defined regex
   Example (inline via CLI):
 
 ```bash
@@ -97,7 +96,7 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-3. Install dependencies
+3. Install dependencies in editable mode
 
 ```bash
 pip install -e .
@@ -107,7 +106,7 @@ This makes the log-analyzer CLI available globally in your environment, and any 
 
 ## Running the CLI
 
-Once installed, you can run commands directly via `log-analyzer`:
+Once installed, commands can be run directly via `log-analyzer`:
 
 - For Interactive Mode
 
@@ -116,25 +115,25 @@ log-analyzer interactive
 log-analyzer>> analyze --file logs/access.log --format nginx
 ```
 
-- Analyze All Logs
+- Analyze Logs
 
 ```bash
 log-analyzer analyze --file path/to/logfile.log --format apache
 ```
 
-- Analyze with Custom Regex
+- Custom Regex
 
 ```bash
 log-analyzer analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
 ```
 
-- Summary of Log Levels
+- Summarize Log Levels
 
 ```bash
 log-analyzer summarize --file path/to/logfile.log
 ```
 
-- Export Logs to File
+- Export Logs
 
 ```bash
 log-analyzer export --file path/to/logfile.log --output-format csv --output-path logs.csv
@@ -142,7 +141,7 @@ log-analyzer export --file path/to/logfile.log --output-format csv --output-path
 
 ## Configuration
 
-You can define defaults in `config.json` in the `src` folder.
+Defaults can be set in `src/config.json`:
 
 Example with built-in format:
 
@@ -163,6 +162,10 @@ Example with custom format:
 }
 ```
 
+- CLI args always override config values.
+
+- If neither CLI args nor config exist, **the app prompts for a file**.
+
 ## Testing
 
 Run tests from root directory:
@@ -171,13 +174,8 @@ Run tests from root directory:
 pytest -s
 ```
 
-Covers:
-
-- Log parsing (valid and invalid formats, files)
-- Log filtering (by level, date and limit)
-- Summary generation
-- Error handling
-  Editable install ensures that tests can import modules using absolute imports like `from log_analyzer.core.analyzer import LogAnalyzer`.
+- Validates parsing, filtering, summarization, export, and error handling.
+- Editable install ensures tests can import modules with absolute imports.
 
 ## Project Structure
 
@@ -186,16 +184,15 @@ Covers:
 ├── src/log_analyzer/          # Core logic
 │   ├── __init__.py
 │   ├── __main__.py            # CLI entry point
-│   └── core/
-│        ├── analyzer.py
-│        ├── parser.py
-│        ├── filter.py
-│        ├── summary.py
-│        ├── exporter.py
-│        └── config.py
-│        └── helpers.py
-├── tests/                     # Unit tests
-├── config.json                # Optional configuration
+│   ├── core/
+│   │    ├── analyzer.py
+│   │    ├── parser.py
+│   │    ├── filter.py
+│   │    ├── summary.py
+│   │    ├── exporter.py
+│   │    └── config.py
+│   │    └── helpers.py
+│   └── tests/                 # Unit tests
 ├── LICENSE
 ├── README.md
 ├── pyproject.toml
