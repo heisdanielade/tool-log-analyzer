@@ -118,7 +118,7 @@ python main.py analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<
 - Summary of Log Levels
 
 ```bash
-python main.py summary --file path/to/logfile.log
+python main.py summarize --file path/to/logfile.log
 ```
 
 - Export Logs to File
