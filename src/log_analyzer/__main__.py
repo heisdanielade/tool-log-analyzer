@@ -48,7 +48,12 @@ def interactive():
     """Start interactive Log Analyzer CLI session."""
     ascii_art = pyfiglet.figlet_format("Log Analyzer", font="slant")
     print(Fore.CYAN + ascii_art)
-    print(Fore.CYAN + "By " + hyperlink("heisdanielade", "https://github.com/heisdanielade") + "\n")
+    print(
+        Fore.CYAN
+        + "By "
+        + hyperlink("heisdanielade", "https://github.com/heisdanielade")
+        + "\n"
+    )
 
     while True:
         try:
@@ -180,6 +185,7 @@ def export(
 # Config Commands
 # ---------------------------
 @config_app.command("set")
+@config_app.command("set")
 def set_config(
     default_file: str = typer.Option(
         None, "--default-file", help="Default log file path"
@@ -187,12 +193,19 @@ def set_config(
     parse_format: str = typer.Option(
         None, "--format", help="Default parsing format/profile"
     ),
+    custom_regex: str = typer.Option(
+        None, "--custom-regex", help="Custom regex pattern (use with --format custom)"
+    ),
 ):
     """Save user configurations."""
+    cm = ConfigManager()
     if default_file:
         cm.set("default_file", default_file)
     if parse_format:
         cm.set("format", parse_format)
+    if custom_regex:
+        cm.set("custom_regex", custom_regex)
+    cm.save()
     typer.echo("Configuration updated.")
 
 
