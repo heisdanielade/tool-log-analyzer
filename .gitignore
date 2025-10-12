@@ -18,4 +18,6 @@ src/log_analyzer/sample_logs/
 src/log_analyzer/exports/
 
 # Package
+dist/
+build/
 *.egg-info/
