@@ -2,13 +2,13 @@ import pytest
 
 from .sample_data.log_entries import PARSED_SAMPLE_LOGS
 
-from core.summary import LogSummary
+from core.summarizer import LogSummarizer
 
 
 @pytest.fixture
-def log_summary() -> LogSummary:
+def log_summary() -> LogSummarizer:
     """Log Summary istance for related tests"""
-    return LogSummary()
+    return LogSummarizer()
 
 
 def test_count_levels(log_summary):

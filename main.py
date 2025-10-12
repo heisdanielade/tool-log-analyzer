@@ -28,7 +28,9 @@ def interactive():
 
     while True:
         try:
-            command = input(f"{Fore.BLUE}" + "\033[1mlog-analyzer>>\033[0m" f"{Style.RESET_ALL}").strip()
+            command = input(
+                f"{Fore.BLUE}" + "\033[1mlog-analyzer>> \033[0m" f"{Style.RESET_ALL}"
+            ).strip()
             if command in ("exit", "quit", "q"):
                 print("\nGoodbye!\n")
                 break
@@ -62,7 +64,7 @@ def analyze(
 
 
 @app.command()
-def summary(
+def summarize(
     file: str = typer.Option(None, "--file", "-f", help="Path to log file"),
     parse_format: str = typer.Option(
         DEFAULT_FORMAT, "--format", "-p", help="Parsing format/profile"

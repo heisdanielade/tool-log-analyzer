@@ -3,7 +3,7 @@ from collections import defaultdict
 from datetime import datetime
 
 
-class LogSummary:
+class LogSummarizer:
     """Takes a list of parsed logs and returns summary statistics."""
 
     def count_levels(self, logs: List[dict]) -> Dict[str, int]:

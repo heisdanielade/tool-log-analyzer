@@ -6,7 +6,7 @@ from colorama import init, Fore
 from core.config import ConfigManager
 from core.parser import LogParser
 from core.filter import LogFilter
-from core.summary import LogSummary
+from core.summarizer import LogSummarizer
 from core.exporter import Exporter
 
 
@@ -24,7 +24,7 @@ class LogAnalyzer:
         custom_regex = self.config.get("custom_regex")
         self.parser = LogParser(format_name, custom_regex=custom_regex)
         self.filter = LogFilter()
-        self.summary = LogSummary()
+        self.summary = LogSummarizer()
         self.exporter = Exporter()
 
     def handle_invalid_file_path(self, file) -> None:
