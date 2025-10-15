@@ -1,7 +1,7 @@
 import json
 import os
 
-CONFIG_PATH = os.path.join(os.path.expanduser("~"), ".log_analyzer_config.json")
+CONFIG_PATH = os.path.join(os.path.expanduser("~"), ".logan-iq_config.json")
 
 
 class ConfigManager:
