@@ -2,11 +2,11 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.2-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
-A Python command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with regex support and user-configurable preferences.
+A Python command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
 
-#### ⚠️ Notice About Version 1.0.1
+#### ⚠️ Notice About Installation
 
-Version **1.0.1** contains unintended scripts and should **not be used**.  
+Version **1.0.1** contains unintended scripts and **should not be used**.  
 Please use **1.0.2 or later** for correct functionality.
 
 ## Features
@@ -112,7 +112,7 @@ logan-iq analyze --file path/to/logfile.log --format apache
 - Custom Regex
 
 ```bash
-logan-iq analyze --file app.log --format custom --regex "^(?P<ts>\S+) (?P<msg>.*)$"
+logan-iq analyze --file app.log --format custom --regex "^(?P<ts>\\S+) (?P<msg>.*)$"
 ```
 
 - Summarize Log Levels
@@ -129,7 +129,21 @@ logan-iq export --file path/to/logfile.log --output-format csv --output-path log
 
 ## Configuration
 
-Defaults can be set in `src/config.json`:
+On installation, a `config.json` is created on the user's system.
+
+- To show configurations
+
+```bash
+logan-iq interactive
+logan-iq>> config show
+```
+
+- To modify configurations
+
+```bash
+logan-iq>> config set --default-file logs/access.log --format nginx
+logan-iq>> config set --format custom --custom-regex "^(?P<ts>\\S+) (?P<msg>.*)$"
+```
 
 Example with built-in format:
 
@@ -146,7 +160,7 @@ Example with custom format:
 {
   "default_file": "logs/app.log",
   "format": "custom",
-  "custom_regex": "^(?P<ts>\\S+) (?P<level>\\w+) (?P<msg>.*)$"
+  "custom_regex": "^(?P<ts>\\S+) (?P<msg>.*)$"
 }
 ```
 
@@ -188,7 +202,7 @@ pytest -s
 
 ```
 
-## Additional Info
+## Dependencies
 
 - CLI built with `Typer`
 - Pretty tables via `Tabulate`
