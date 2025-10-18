@@ -1,6 +1,6 @@
 # Logan-IQ: Log Analyzer Tool
 
-![Version](https://img.shields.io/badge/version-1.0.2-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
+![Version](https://img.shields.io/badge/version-1.0.4-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
 A Python command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
 
@@ -167,40 +167,6 @@ Example with custom format:
 - CLI args always override config values.
 
 - If neither CLI args nor config exist, **the app prompts for a file**.
-
-## Testing
-
-Run tests from root directory:
-
-```bash
-pytest -s
-```
-
-- Validates parsing, filtering, summarization, export, and error handling.
-- Editable install ensures tests can import modules with absolute imports.
-
-## Project Structure
-
-```
-.
-├── src/logan_iq/          # Core logic
-│   ├── __init__.py
-│   ├── __main__.py            # CLI entry point
-│   ├── core/
-│   │    ├── analyzer.py
-│   │    ├── parser.py
-│   │    ├── filter.py
-│   │    ├── summary.py
-│   │    ├── exporter.py
-│   │    └── config.py
-│   │    └── helpers.py
-│   └── tests/                 # Unit tests
-├── LICENSE
-├── README.md
-├── pyproject.toml
-└── venv/                      # Virtual environment (optional)
-
-```
 
 ## Dependencies
 
