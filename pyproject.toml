@@ -1,7 +1,7 @@
 [project]
 name = "logan_iq"
-version = "1.0.3"
-description = "Python command-line tool for parsing, filtering, summarizing, and exporting log files."
+version = "1.0.4"
+description = "Interactive command-line tool for parsing, filtering, summarizing, and exporting log files."
 authors = [
     { name = "heisdanielade" }
 ]

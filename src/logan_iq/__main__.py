@@ -7,9 +7,11 @@ from .core.config import ConfigManager
 from .core.analyzer import LogAnalyzer
 from .core.helpers import hyperlink
 
+from .__version__ import __version__
+
 init(autoreset=True)
 
-app = typer.Typer(help="Logan-IQ: Parse, filter, summarize logs.")
+app = typer.Typer(help="Logan-IQ: Analyze, parse, filter & summarize logs.")
 config_app = typer.Typer(help="Manage user configurations.")
 app.add_typer(config_app, name="config")
 
@@ -46,13 +48,41 @@ def resolve_file_and_format(file: str, parse_format: str):
 def interactive():
     """Start interactive Log Analyzer CLI session."""
     ascii_art = pyfiglet.figlet_format("Logan-IQ", font="slant")
-    print(Fore.CYAN + ascii_art)
+    print(Fore.CYAN + ascii_art + f"v{__version__}")
     print(
         Fore.CYAN
         + "By "
         + hyperlink("heisdanielade", "https://github.com/heisdanielade")
-        + "\n"
     )
+    print(Fore.CYAN + "Type 'help' for commands or 'exit' to quit.\n")
+
+    def print_help():
+        """Print available commands as a simple table."""
+        commands = [
+            ("analyze", "Parse and display all log entries"),
+            ("summarize", "Generate summary of log levels"),
+            ("filter", "Filter logs by level and/or date range"),
+            ("export", "Parse, filter and export logs to CSV or JSON"),
+            (
+                "config set",
+                "Save user configurations (default_file, format, custom_regex)",
+            ),
+            ("config show", "Display current configurations"),
+            ("interactive", "Start interactive session"),
+            ("help", "Show this help"),
+            ("exit / quit / q", "Exit interactive mode"),
+        ]
+
+        cmd_w = max(len(c[0]) for c in commands) + 2
+        desc_w = max(len(c[1]) for c in commands) + 2
+
+        sep = "-" * (cmd_w + desc_w + 3)
+        print(Fore.CYAN + sep)
+        print(Fore.CYAN + f"{'COMMAND'.ljust(cmd_w)} | {'DESCRIPTION'.ljust(desc_w)}")
+        print(Fore.CYAN + sep)
+        for cmd, desc in commands:
+            print(f"{cmd.ljust(cmd_w)} | {desc.ljust(desc_w)}")
+        print(Fore.CYAN + sep + "\n")
 
     while True:
         try:
@@ -60,8 +90,11 @@ def interactive():
                 f"{Fore.BLUE}\033[1mlogan-iq>> \033[0m{Style.RESET_ALL}"
             ).strip()
             if command in ("exit", "quit", "q", "cancel"):
-                print("\nGoodbye!\n")
+                print("\nGoodbye..\n")
                 break
+            if command == "help":
+                print_help()
+                continue
             if command:
                 sys.argv = ["main.py"] + command.split()
                 try:
@@ -71,7 +104,7 @@ def interactive():
                 except Exception as e:
                     print(Fore.RED + f"(e) {str(e)}\n")
         except (KeyboardInterrupt, EOFError):
-            print("\nGoodbye!\n")
+            print("\nGoodbye..\n")
             break
 
 
@@ -183,7 +216,6 @@ def export(
 # ---------------------------
 # Config Commands
 # ---------------------------
-@config_app.command("set")
 @config_app.command("set")
 def set_config(
     default_file: str = typer.Option(
