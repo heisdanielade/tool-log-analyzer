@@ -1,8 +1,8 @@
 # Logan-IQ: Log Analyzer Tool
 
-![Version](https://img.shields.io/badge/version-1.0.3-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
+![Version](https://img.shields.io/badge/version-1.0.4-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
-A Python command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
+Interactive command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
 
 #### ⚠️ Notice About Installation
 
@@ -19,6 +19,7 @@ Please use **1.0.2 or later** for correct functionality.
 - Colorful output and clean formatting
 - Easily testable and extensible
 
+
 ## Install
 
 Package is available on [PyPI](https://pypi.org/project/logan-iq/)
@@ -28,6 +29,9 @@ pip install logan-iq
 ```
 
 This installs the CLI globally and makes the `logan-iq` command available in your terminal.
+
+#### 🖥️ Startup
+![Logan-IQ Startup](screenshots/startup.png)
 
 ## How it Works
 
