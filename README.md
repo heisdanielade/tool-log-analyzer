@@ -21,7 +21,7 @@ Please use **1.0.2 or later** for correct functionality.
 
 ## Install
 
-Package is available on [PyPI](https://pypi.org/project/logan-iq/1.0.1/)
+Package is available on [PyPI](https://pypi.org/project/logan-iq/)
 
 ```bash
 pip install logan-iq
