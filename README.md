@@ -1,6 +1,6 @@
 # Logan-IQ: Log Analyzer Tool
 
-![Version](https://img.shields.io/badge/version-1.0.4-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
+![Version](https://img.shields.io/badge/version-1.1.0-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
 An interactive command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
 
@@ -76,6 +76,12 @@ Or use the Built-in formats:
 
 ```yaml
 192.100.1.1 - - [28/Aug/2025:12:34:56 +0000] "GET /index.html HTTP/1.1" 200 1024 "http://example.com" "Mozilla/5.0"
+```
+
+- **json** → JSON formatted logs (one object per line)
+
+```json
+{"datetime": "2025-08-28 12:34:56", "level": "INFO", "message": "Server started", "method": "GET", "status": 200, "path": "/api/v1/users"}
 ```
 
 - **custom** → Any user-defined regex
