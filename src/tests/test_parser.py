@@ -107,14 +107,16 @@ def test_parse_valid_json_line(json_parser):
     Test parsing a valid JSON log line with all required fields.
     Should return a dictionary with all fields preserved.
     """
-    log_line = json.dumps({
-        "datetime": "2025-10-26 12:34:56",
-        "level": "INFO",
-        "message": "Request processed",
-        "method": "GET",
-        "status": 200,
-        "path": "/api/v1/users"
-    })
+    log_line = json.dumps(
+        {
+            "datetime": "2025-10-26 12:34:56",
+            "level": "INFO",
+            "message": "Request processed",
+            "method": "GET",
+            "status": 200,
+            "path": "/api/v1/users",
+        }
+    )
     result = json_parser.parse_line(log_line)
     assert result is not None
     assert result["datetime"] == "2025-10-26 12:34:56"
@@ -140,12 +142,14 @@ def test_parse_json_missing_required_fields(json_parser):
     Test parsing JSON without required fields (datetime, level).
     Should return None.
     """
-    log_line = json.dumps({
-        "message": "Request processed",
-        "method": "GET",
-        "status": 200,
-        "path": "/api/v1/users"
-    })
+    log_line = json.dumps(
+        {
+            "message": "Request processed",
+            "method": "GET",
+            "status": 200,
+            "path": "/api/v1/users",
+        }
+    )
     result = json_parser.parse_line(log_line)
     assert result is None
 
@@ -162,7 +166,7 @@ def test_parse_json_file(tmp_path: Path, json_parser):
             "message": "First request",
             "method": "GET",
             "status": 200,
-            "path": "/api/v1/users"
+            "path": "/api/v1/users",
         },
         {
             "datetime": "2025-10-26 12:34:57",
@@ -170,15 +174,15 @@ def test_parse_json_file(tmp_path: Path, json_parser):
             "message": "Second request failed",
             "method": "POST",
             "status": 500,
-            "path": "/api/v1/users"
-        }
+            "path": "/api/v1/users",
+        },
     ]
-    
+
     test_file = tmp_path / "test.json"
     with open(test_file, "w", encoding="utf-8") as f:
         for entry in log_entries:
             f.write(json.dumps(entry) + "\n")
-    
+
     results = json_parser.parse_file(str(test_file))
     assert len(results) == 2
     assert results[0]["message"] == "First request"
@@ -190,15 +194,17 @@ def test_parse_json_with_extra_fields(json_parser):
     Test parsing JSON with additional fields beyond the required ones.
     Should preserve all fields in the output.
     """
-    log_line = json.dumps({
-        "datetime": "2025-10-26 12:34:56",
-        "level": "INFO",
-        "message": "Request processed",
-        "method": "GET",
-        "status": 200,
-        "path": "/api/v1/users",
-        "extra_field": "some value"
-    })
+    log_line = json.dumps(
+        {
+            "datetime": "2025-10-26 12:34:56",
+            "level": "INFO",
+            "message": "Request processed",
+            "method": "GET",
+            "status": 200,
+            "path": "/api/v1/users",
+            "extra_field": "some value",
+        }
+    )
     result = json_parser.parse_line(log_line)
     assert result is not None
     assert "extra_field" in result

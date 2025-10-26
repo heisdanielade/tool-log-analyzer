@@ -81,7 +81,14 @@ Or use the Built-in formats:
 - **json** → JSON formatted logs (one object per line)
 
 ```json
-{"datetime": "2025-08-28 12:34:56", "level": "INFO", "message": "Server started", "method": "GET", "status": 200, "path": "/api/v1/users"}
+{
+  "datetime": "2025-08-28 12:34:56",
+  "level": "INFO",
+  "message": "Server started",
+  "method": "GET",
+  "status": 200,
+  "path": "/api/v1/users"
+}
 ```
 
 - **custom** → Any user-defined regex

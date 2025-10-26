@@ -11,7 +11,7 @@ class LogParser:
 
     # Predefined formats and their regex patterns
     AVAILABLE_FORMATS = {
-           "simple": r"^(?P<datetime>.*?) \[(?P<level>\w+)\] .*?: (?P<message>.*)$",
+        "simple": r"^(?P<datetime>.*?) \[(?P<level>\w+)\] .*?: (?P<message>.*)$",
         "apache": r'^(?P<ip>\S+) - - \[(?P<datetime>[^\]]+)\] "(?P<method>\S+) (?P<path>\S+) \S+" (?P<status>\d+) \d+$',
         "nginx": (
             r"^(?P<ip>\S+) - (?P<user>\S+) "
@@ -50,10 +50,10 @@ class LogParser:
     def _parse_json_line(self, line: str) -> Optional[dict]:
         """
         Parse a JSON format log line.
-        
+
         Args:
             line: A string containing a JSON object
-            
+
         Returns:
             dict if valid JSON with required fields, otherwise None
         """
@@ -61,11 +61,11 @@ class LogParser:
             data = json.loads(line)
             if not isinstance(data, dict):
                 return None
-                
+
             # Check for required fields
             if not all(field in data for field in self.REQUIRED_JSON_FIELDS):
                 return None
-                
+
             return data
         except json.JSONDecodeError:
             return None
@@ -77,7 +77,7 @@ class LogParser:
         """
         if self.format_name == "json":
             return self._parse_json_line(line)
-        
+
         match = self.pattern.match(line)
         return match.groupdict() if match else None
 
@@ -86,7 +86,7 @@ class LogParser:
         Parse all lines in a file.
         Returns a list of parsed entries.
         Skips lines that don't match.
-        
+
         For JSON format:
         - Expects one JSON object per line
         - Each line must be a valid JSON object with required fields
