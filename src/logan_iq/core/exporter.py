@@ -14,8 +14,15 @@ class Exporter:
             s = str(s)
             return s if len(s) <= width else s[: width - 3] + "..."
 
-        headers = data[0].keys()
-        rows = [[truncate(item[h]) for h in headers] for item in data]
+        # Build ordered headers from first occurrence across all records.
+        headers = []
+        for item in data:
+            for k in item.keys():
+                if k not in headers:
+                    headers.append(k)
+
+        # Build rows using safe lookup so missing fields produce empty cells.
+        rows = [[truncate(item.get(h, "")) for h in headers] for item in data]
         table = tabulate(rows, headers=headers, tablefmt="grid")  # type: ignore
         return table
 
