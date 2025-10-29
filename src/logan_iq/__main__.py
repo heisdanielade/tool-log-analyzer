@@ -1,6 +1,10 @@
 import sys
+import os
+from datetime import datetime
+
 import pyfiglet
 import typer
+import shlex
 from colorama import init, Fore, Style
 
 from .core.config import ConfigManager
@@ -114,7 +118,7 @@ def interactive():
                     else:
                         sys.argv = ["logan-iq"] + tokens
                 else:
-                    sys.argv = ["logan-iq"] + command.split()
+                    sys.argv = ["logan-iq"] + shlex.split(command)
 
                 try:
                     app(standalone_mode=False)
@@ -205,7 +209,7 @@ def export(
     ),
     regex: str = typer.Option(None, "--regex", "-r", help="Custom regex"),
     type: str = typer.Argument(..., help="To CSV or JSON file"),
-    output: str = typer.Argument(..., help="Output CSV or JSON file"),
+    output: str = typer.Option(None, "--output", "-o", help="Output CSV or JSON file"),
     level: str = typer.Option(None, help="Filter by log level"),
     limit: int = typer.Option(None, help="Result data limit, 0 for all data"),
     start: str = typer.Option(None, help="Start datetime"),
@@ -216,9 +220,16 @@ def export(
     analyzer = LogAnalyzer(parse_format=parse_format, custom_regex=regex)
     entries = analyzer.filter_logs(file, level, limit, start, end)
 
+    export_type = type.lower()
+
+    # Determine output filename if not provided
+    if output is None:
+        base_name = os.path.splitext(os.path.basename(file))[0]
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output = f"{base_name}_by_logan-iq_{timestamp}.{export_type}"
+
     dot_index = output.rfind(".")
     file_extension = output[dot_index + 1 :].lower()
-    export_type = type.lower()
 
     if export_type == "csv" and file_extension == "csv":
         analyzer.export_csv(entries, output)

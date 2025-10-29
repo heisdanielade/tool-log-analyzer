@@ -1,6 +1,6 @@
 # Logan-IQ: Log Analyzer Tool
 
-![Version](https://img.shields.io/badge/version-1.1.2-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
+![Version](https://img.shields.io/badge/version-1.1.3-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
 An interactive command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
 
@@ -118,6 +118,9 @@ Once installed, commands can be run directly via `logan-iq`:
 ```bash
 logan-iq interactive
 logan-iq>> analyze --file logs/access.log --format nginx
+logan-iq>> summarize --file logs/access.log --format nginx
+logan-iq>> export json
+logan-iq>> export json --output logs/access.json
 ```
 
 - Analyze Logs
@@ -141,7 +144,7 @@ logan-iq summarize --file path/to/logfile.log
 - Export Logs
 
 ```bash
-logan-iq export --file path/to/logfile.log --output-format csv --output-path logs.csv
+logan-iq export --file path/to/logfile.log --output csv
 ```
 
 ## Configuration
