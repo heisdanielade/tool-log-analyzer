@@ -1,6 +1,6 @@
 # Logan-IQ: Log Analyzer Tool
 
-![Version](https://img.shields.io/badge/version-1.1.1-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
+![Version](https://img.shields.io/badge/version-1.1.2-blue) ![Issues](https://img.shields.io/github/issues/heisdanielade/tool-log-analyzer)
 
 An interactive command-line tool for parsing, filtering, summarizing, and exporting log files. Designed to handle multiple log formats with custom regex support and user-configurable preferences.
 
@@ -184,6 +184,24 @@ Example with custom format:
 - CLI args always override config values.
 
 - If neither CLI args nor config exist, **the app prompts for a file**.
+
+### Deleting configuration entries
+
+You can delete configuration entries using the `config delete` command.
+
+- Delete a single key:
+
+```bash
+logan-iq config delete default_file
+```
+
+- Delete all keys (requires confirmation):
+
+```bash
+logan-iq config delete all
+```
+
+If you run the command without either `--key` or `--all` you'll receive a helpful message explaining the available options.
 
 ## Dependencies
 

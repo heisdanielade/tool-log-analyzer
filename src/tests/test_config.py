@@ -15,6 +15,23 @@ def test_load_empty_config(config_manager):
     assert config_manager.all() == {}
 
 
+def test_delete_key(config_manager):
+    """Test deleting a specific configuration key."""
+    config_manager.set("a", 1)
+    config_manager.set("b", 2)
+    config_manager.delete("a")
+    assert config_manager.get("a") is None
+    assert config_manager.get("b") == 2
+
+
+def test_delete_all(config_manager):
+    """Test deleting all configuration entries."""
+    config_manager.set("x", "y")
+    config_manager.set("z", "w")
+    config_manager.delete()
+    assert config_manager.all() == {}
+
+
 def test_set_and_get_config(config_manager):
     """Test setting and getting a configuration value."""
     config_manager.set("test_key", "test_value")

@@ -68,6 +68,7 @@ def interactive():
                 "Save user configurations (default_file, format, custom_regex)",
             ),
             ("config show", "Display current configurations"),
+            ("config delete", "Delete a config key or clear all (confirmation)"),
             ("interactive", "Start interactive session"),
             ("help", "Show this help"),
             ("exit / quit / q", "Exit interactive mode"),
@@ -96,7 +97,25 @@ def interactive():
                 print_help()
                 continue
             if command:
-                sys.argv = ["main.py"] + command.split()
+                tokens = command.split()
+                if len(tokens) >= 2 and tokens[0] == "config" and tokens[1] == "delete":
+                    # If user typed: config delete KEY  -> treat as --key KEY
+                    if len(tokens) == 3 and not tokens[2].startswith("-"):
+                        if tokens[2].lower() in ("all", "--all"):
+                            sys.argv = ["logan-iq", "config", "delete", "--all"]
+                        else:
+                            sys.argv = [
+                                "logan-iq",
+                                "config",
+                                "delete",
+                                "--key",
+                                tokens[2],
+                            ]
+                    else:
+                        sys.argv = ["logan-iq"] + tokens
+                else:
+                    sys.argv = ["logan-iq"] + command.split()
+
                 try:
                     app(standalone_mode=False)
                 except typer.Exit:
@@ -250,6 +269,46 @@ def show_config():
         typer.echo("Current Configuration:\n")
         for key, value in config.items():
             typer.echo(f"- {key}: {value}")
+
+
+@config_app.command("delete")
+def delete_config(
+    key: str = typer.Option(
+        None, "--key", "-k", help="Configuration key to delete (omit to use --all)"
+    ),
+    delete_all: bool = typer.Option(
+        False, "--all", help="Delete all configuration entries"
+    ),
+):
+    """Delete a configuration key or clear all configuration.
+
+    Use `--key` to delete a single configuration entry, or `--all` to remove
+    everything (confirmation will be requested).
+    """
+    cm_local = ConfigManager()
+    if delete_all:
+        confirm = typer.confirm(
+            "Are you sure you want to delete ALL configuration data? This cannot be undone."
+        )
+        if not confirm:
+            typer.echo("Aborted.")
+            raise typer.Exit()
+        cm_local.delete()
+        typer.echo(Fore.GREEN + "All configuration deleted.")
+        return
+
+    if key:
+        if cm_local.get(key) is None:
+            typer.echo(Fore.YELLOW + f"No configuration found for key: {key}")
+            raise typer.Exit()
+        cm_local.delete(key)
+        typer.echo(Fore.GREEN + f"Deleted configuration key: {key}")
+        return
+
+    typer.echo(
+        Fore.YELLOW
+        + "Specify --key <name> to delete a specific config or --all to clear everything."
+    )
 
 
 # ---------------------------

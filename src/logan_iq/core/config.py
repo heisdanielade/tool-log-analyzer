@@ -1,11 +1,17 @@
 import json
 import os
+from typing import Optional
 
 CONFIG_PATH = os.path.join(os.path.expanduser("~"), ".logan-iq_config.json")
 
 
 class ConfigManager:
-    """Manage user configuration settings in the home directory."""
+    """Manage user configuration settings in the home directory.
+
+    The `delete` method accepts an optional `key`. If `key` is provided,
+    only that configuration entry is removed. If omitted, the entire
+    configuration is cleared.
+    """
 
     def __init__(self, config_file: str = CONFIG_PATH) -> None:
         self.config_file = config_file
@@ -34,9 +40,22 @@ class ConfigManager:
         """Get a config value by key."""
         return self.config_data.get(key, default)
 
-    def set(self, key: str, value):
+    def set(self, key: str, value) -> None:
         """Set a config value."""
         self.config_data[key] = value
+        self.save()
+
+    def delete(self, key: Optional[str] = None) -> None:
+        """Delete a specific configuration key or all configuration data.
+
+        Args:
+            key: If provided, remove only this key. If None, clear all config.
+        """
+        if key is None:
+            self.config_data.clear()
+        else:
+            # Remove the key if it exists; do nothing otherwise.
+            self.config_data.pop(key, None)
         self.save()
 
     def all(self) -> dict:
