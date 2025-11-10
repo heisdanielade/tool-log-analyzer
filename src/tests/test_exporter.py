@@ -1,4 +1,6 @@
-from logan_iq.core.exporter import Exporter
+import json
+from pathlib import Path
+from ..logan_iq.core.exporter import Exporter
 
 
 def test_to_table_with_mixed_keys():
@@ -16,16 +18,11 @@ def test_to_table_with_mixed_keys():
 
     table = exporter.to_table(data)
     # Should include headers for keys from both records
-    assert "datetime" in table
-    assert "level" in table
-    assert "message" in table
-    assert "method" in table
-    assert "status" in table
-    assert "path" in table
+    for key in ["datetime", "level", "message", "method", "status", "path"]:
+        assert key in table
     # Ensure values are present
-    assert "GET" in table
-    assert "500" in table
-    assert "/api" in table
+    for value in ["GET", "500", "/api"]:
+        assert str(value) in table
 
 
 def test_to_table_handles_missing_fields():
@@ -35,9 +32,46 @@ def test_to_table_handles_missing_fields():
         {"a": 3, "c": 4},
     ]
     table = exporter.to_table(data)
-    assert "a" in table
-    assert "b" in table
-    assert "c" in table
-    assert "1" in table
-    assert "3" in table
-    assert "4" in table
+    for key in ["a", "b", "c"]:
+        assert key in table
+    for value in ["1", "3", "4"]:
+        assert str(value) in table
+
+
+def test_to_table_empty_returns_message():
+    exporter = Exporter()
+    assert exporter.to_table([]) == "No data to display."
+
+
+def test_to_csv_creates_file(tmp_path):
+    exporter = Exporter()
+    data = [{"x": 1, "y": 2}, {"x": 3, "y": 4}]
+    file_path = tmp_path / "output.csv"
+    exporter.to_csv(data, str(file_path))
+
+    # File should exist
+    assert file_path.exists()
+    content = file_path.read_text()
+    for value in ["1", "2", "3", "4"]:
+        assert str(value) in content
+
+
+def test_to_csv_empty_data(tmp_path, capsys):
+    exporter = Exporter()
+    file_path = tmp_path / "empty.csv"
+    exporter.to_csv([], str(file_path))
+    # Should print message, file should not exist
+    captured = capsys.readouterr()
+    assert "No data to export." in captured.out
+    assert not file_path.exists()
+
+
+def test_to_json_creates_file(tmp_path):
+    exporter = Exporter()
+    data = [{"a": "foo", "b": "bar"}]
+    file_path = tmp_path / "output.json"
+    exporter.to_json(data, str(file_path))
+
+    assert file_path.exists()
+    loaded = json.loads(file_path.read_text())
+    assert loaded == data

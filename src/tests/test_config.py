@@ -1,6 +1,5 @@
-import json
 import pytest
-from logan_iq.core.config import ConfigManager
+from ..logan_iq.core.config import ConfigManager
 
 
 @pytest.fixture
@@ -10,13 +9,30 @@ def config_manager(tmp_path):
 
 
 def test_load_empty_config(config_manager):
-    """Test loading an empty configuration file."""
+    """Loading an empty configuration file initializes an empty dict."""
     config_manager.load()
     assert config_manager.all() == {}
 
 
+def test_set_and_get_config(config_manager):
+    """Set and retrieve a configuration value."""
+    config_manager.set("test_key", "test_value")
+    assert config_manager.get("test_key") == "test_value"
+    # Getting a missing key should return None
+    assert config_manager.get("non_existent") is None
+    # Getting a missing key with a default should return default
+    assert config_manager.get("non_existent", default="default") == "default"
+
+
+def test_overwrite_config_key(config_manager):
+    """Setting an existing key should overwrite its value."""
+    config_manager.set("key", "value1")
+    config_manager.set("key", "value2")
+    assert config_manager.get("key") == "value2"
+
+
 def test_delete_key(config_manager):
-    """Test deleting a specific configuration key."""
+    """Deleting a specific key works."""
     config_manager.set("a", 1)
     config_manager.set("b", 2)
     config_manager.delete("a")
@@ -25,34 +41,37 @@ def test_delete_key(config_manager):
 
 
 def test_delete_all(config_manager):
-    """Test deleting all configuration entries."""
+    """Deleting all configuration entries clears everything."""
     config_manager.set("x", "y")
     config_manager.set("z", "w")
     config_manager.delete()
     assert config_manager.all() == {}
 
 
-def test_set_and_get_config(config_manager):
-    """Test setting and getting a configuration value."""
-    config_manager.set("test_key", "test_value")
-    assert config_manager.get("test_key") == "test_value"
-
-
 def test_save_and_load_config(config_manager):
-    """Test saving and loading configuration data."""
+    """Saving and re-loading persists the data."""
     config_manager.set("key1", "value1")
     config_manager.save()
 
+    # Load into a new manager
     new_manager = ConfigManager(config_file=config_manager.config_file)
     new_manager.load()
     assert new_manager.get("key1") == "value1"
 
 
-def test_load_invalid_json(config_manager, monkeypatch):
-    """Test loading a configuration file with invalid JSON."""
-    invalid_json_path = config_manager.config_file
-    with open(invalid_json_path, "w") as f:
+def test_load_invalid_json(config_manager):
+    """Loading a corrupted config file should reset to empty dict."""
+    with open(config_manager.config_file, "w") as f:
         f.write("invalid json")
 
     config_manager.load()
     assert config_manager.all() == {}
+
+
+def test_file_creation_on_init(tmp_path):
+    """The config file should be created if it doesn't exist."""
+    file_path = tmp_path / "new_config.json"
+    assert not file_path.exists()
+    manager = ConfigManager(config_file=str(file_path))
+    assert file_path.exists()
+    assert manager.all() == {}
