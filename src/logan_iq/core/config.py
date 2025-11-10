@@ -19,7 +19,7 @@ class ConfigManager:
         self.load()
 
     def load(self) -> dict:
-        """Load configuration from JSON file. Creates empty file if it doesn't exist."""
+        """Load configuration from the config JSON file. Creates an empty file if it doesn't exist."""
         if not os.path.exists(self.config_file):
             self.config_data = {}
             self.save()
@@ -49,7 +49,7 @@ class ConfigManager:
         """Delete a specific configuration key or all configuration data.
 
         Args:
-            key: If provided, remove only this key. If None, clear all config.
+            key: If provided, remove only this key. If None, clear all configs.
         """
         if key is None:
             self.config_data.clear()

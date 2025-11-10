@@ -1,38 +1,50 @@
 from typing import List, Dict
 from collections import defaultdict
-from datetime import datetime
+
+from .utils.date import parse_date
 
 
 class LogSummarizer:
-    """Takes a list of parsed logs and returns summary statistics."""
+    """Summarize parsed logs: count levels, logs per day, etc."""
 
     def count_levels(self, logs: List[dict]) -> Dict[str, int]:
         """
-        Count the number of entries per log level.
-        Returns a dictionary: {"INFO": 12, "ERROR" 5, ...},
-            "UNKNOWN" for log entries without levels.
-        Case insensitive i.e. 'error' and 'ERROR' are treated the same.
+        Count the number of entries per log level (case-insensitive).
+        Missing levels are counted as 'UNKNOWN'.
         """
         counts = defaultdict(int)
 
         for log in logs:
             level = log.get("level", "").upper()
-            if level:
-                counts[level] += 1
-            else:
-                counts["UNKNOWN"] += 1
+            counts[level if level else "UNKNOWN"] += 1
 
         return dict(counts)
 
-    def count_logs_in_a_day(self, logs: List[dict], day: datetime) -> Dict[str, int]:
-        # TODO: Count logs per day/hour
-        """ """
+    def count_logs_in_a_day(
+        self,
+        logs: List[dict],
+        day: str,
+        day_fmt: str = "%Y-%m-%d",
+        log_fmt: str = "%Y-%m-%d %H:%M:%S,%f",
+    ) -> Dict[str, int]:
+        """
+        Count logs grouped by level for a specific day.
+
+        Args:
+            logs: List of parsed log dicts
+            day: Day string (YYYY-MM-DD by default)
+            day_fmt: Format of the input day string
+            log_fmt: Format of the datetime in log entries
+        """
+        day_dt = parse_date(day, day_fmt)
+        if not day_dt:
+            raise ValueError(f"Invalid day: {day}")
+
         counts = defaultdict(int)
-
         for log in logs:
-            period = log.get("datetime", "")
+            log_dt = parse_date(log.get("datetime"), log_fmt)
+            if log_dt and log_dt.date() == day_dt.date():
+                level = log.get("level", "").upper() or "UNKNOWN"
+                counts[level] += 1
 
-        return None
-
-    # TODO: Add pie chart with matplotlib
-    # TODO: Output results to CSV
+        return dict(counts)

@@ -3,8 +3,8 @@ __pycache__/
 *py[cod]
 *$py.class
 
-
-# VSCode settings
+# IDE settings
+.idea/
 .vscode/
 
 # Env

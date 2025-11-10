@@ -3,42 +3,38 @@ import csv
 import json
 from tabulate import tabulate
 
+from .utils.string import truncate
+
 
 class Exporter:
     def to_table(self, data: List[dict]) -> str:
-        """Convert list of dicts to a pretty table string."""
+        """Convert the list of dicts to a pretty table string."""
         if not data:
             return "No data to display."
 
-        def truncate(s, width=60):
-            s = str(s)
-            return s if len(s) <= width else s[: width - 3] + "..."
-
-        # Build ordered headers from first occurrence across all records.
+        # build headers
         headers = []
         for item in data:
             for k in item.keys():
                 if k not in headers:
                     headers.append(k)
 
-        # Build rows using safe lookup so missing fields produce empty cells.
         rows = [[truncate(item.get(h, "")) for h in headers] for item in data]
-        table = tabulate(rows, headers=headers, tablefmt="grid")  # type: ignore
-        return table
+        return tabulate(rows, headers=headers, tablefmt="grid")  # type: ignore
 
     def to_csv(self, data: List[dict], path: str) -> None:
-        """Write list of dicts to CSV file."""
+        """Write a list of dicts to a CSV file."""
         if not data:
             print("No data to export.")
             return
 
         headers = data[0].keys()
-        with open(path, "w", newline="", encoding="utf-8") as csv_file:
-            writer = csv.DictWriter(csv_file, fieldnames=headers)
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=headers)
             writer.writeheader()
             writer.writerows(data)
 
-    def to_json(self, data: list[dict], file_path: str) -> None:
-        """Write JSON data to file."""
+    def to_json(self, data: List[dict], file_path: str) -> None:
+        """Write JSON data to a file."""
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)

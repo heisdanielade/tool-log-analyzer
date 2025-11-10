@@ -1,18 +1,14 @@
 import os
 import sys
 
-
 def supports_hyperlinks() -> bool:
-    """
-    Detect if the terminal supports ANSI hyperlinks.
-    Works in most modern terminals (VS Code, iTerm2, Windows Terminal).
-    """
+    """Detect if the terminal supports ANSI hyperlinks."""
     if os.getenv("FORCE_HYPERLINK"):
         return True
     if not sys.stdout.isatty():
         return False
     term = os.getenv("TERM", "")
-    colorterm = os.getenv("COLORTERM", "")
+    color_term = os.getenv("COLORTERM", "")
     term_program = os.getenv("TERM_PROGRAM", "")
     return any(
         [
@@ -21,16 +17,13 @@ def supports_hyperlinks() -> bool:
             "iTerm.app" in term_program,
             "WezTerm" in term_program,
             "WindowsTerminal" in term_program,
-            "truecolor" in colorterm,
+            "truecolor" in color_term,
         ]
     )
 
 
 def hyperlink(text: str, url: str) -> str:
-    """
-    Return a clickable hyperlink if supported, otherwise fallback text.
-    """
+    """Return a clickable hyperlink if supported, otherwise fallback text."""
     if supports_hyperlinks():
         return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
-    else:
-        return f"{text} ({url})"
+    return f"{text} ({url})"
