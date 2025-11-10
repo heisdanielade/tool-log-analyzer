@@ -22,7 +22,7 @@ Please install **v1.0.2 or later** for proper functionality and stability.
 
 - Parse logs using default or custom regex patterns
 - Interactive and user-friendly CLI interface
-- Filter logs by level, date range, or result limit
+- Filter logs by level, date range, keyword or result limit
 - Generate summary tables with counts per level or per day
 - Export logs in CSV or JSON formats
 - Clean, colorful, and easy-to-read terminal output
@@ -146,9 +146,12 @@ Once installed, commands can be run directly via `logan-iq`:
     
     logan-iq>> analyze --file app.log
     logan-iq>> summarize --file app.log --format simple
+    
+    logan-iq>> filter-logs --search "500 Server Error"
     logan-iq>> filter-logs --level ERROR --start 2025-11-01 --end 2025-11-08
     logan-iq>> export-logs csv --file app.log --output exported_logs/output.csv
     logan-iq>> export-logs json --file app.log --output exported_logs/output.json
+    logan-iq>> export-logs json --search "'404 Client Error" --file app.log --output exported_logs/output.json
     
     logan-iq>> config set --default-file app.log --format simple
     logan-iq>> config show
@@ -179,7 +182,7 @@ Once installed, commands can be run directly via `logan-iq`:
 - Filter Log Levels
 
 ```bash
-  logan-iq filter-logs --file app.log --level ERROR --start 2025-11-01 --end 2025-11-08
+  logan-iq filter-logs --file app.log --level ERROR --search "500 Server Error" --start 2025-11-01 --end 2025-11-08
 ```
 
 - Export Logs
@@ -197,8 +200,9 @@ You can also use shorthand flags like:
   -r     # --custom-regex
   -cr    # --custom-regex (for configs)
   -l     # --level
+  -s     # --search
   -lm    # --limit
-  -s     # --start
+  -st    # --start
   -e     # --end
   -d     # --day
   -o     # --output

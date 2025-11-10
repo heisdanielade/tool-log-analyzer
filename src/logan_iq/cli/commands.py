@@ -76,13 +76,14 @@ def filter_logs(
         regex: str = typer.Option(None, "--regex", "-r", help="Custom regex (use with --format custom)"),
         level: str = typer.Option(None, "--level", "-l", help="Log level i.e., INFO, ERROR, WARNING"),
         limit: int = typer.Option(None, "--limit", "-lm", help="Result set limit (optional)"),
-        start: str = typer.Option(None, "--start", "-s", help="Start date (log timestamp)"),
-        end: str = typer.Option(None, "--end", "-e", help="End date (log timestamp")
+        start: str = typer.Option(None, "--start", "-st", help="Start date (log timestamp)"),
+        end: str = typer.Option(None, "--end", "-e", help="End date (log timestamp"),
+        keyword_search: str = typer.Option(None, "--search", "-s", help="Filter logs by keyword in the message field.")
 ):
     """Filter logs by level and/or date range."""
     file, parse_format = resolve_file_and_format(file, parse_format)
     analyzer = LogAnalyzer(parse_format, regex)
-    entries = analyzer.filter_logs(file, level, limit, start, end)
+    entries = analyzer.filter_logs(file, level, limit, start, end, keyword_search)
     analyzer.print_table(entries)
     typer.echo("\n" + Fore.GREEN + f"Filtered '{file}' with format={parse_format}, level={level}, date_range={start} to {end}, limit={limit}\n")
 
@@ -96,13 +97,14 @@ def export_logs(
         output: str = typer.Option(None, "--output", "-o", help="CSV/JSON output file (optional)"),
         level: str = typer.Option(None, "--level", "-l", help="Log level i.e., INFO, ERROR, WARNING"),
         limit: int = typer.Option(None, "--limit", "-lm", help="Result set limit (optional)"),
-        start: str = typer.Option(None, "--start", "-s", help="Start date (log timestamp)"),
-        end: str = typer.Option(None, "--end", "-e", help="End date (log timestamp")
+        start: str = typer.Option(None, "--start", "-st", help="Start date (log timestamp)"),
+        end: str = typer.Option(None, "--end", "-e", help="End date (log timestamp"),
+        keyword_search: str = typer.Option(None, "--search", "-s", help="Filter logs by keyword in the message field.")
 ):
     """Parse, filter and export logs to CSV or JSON."""
     file, parse_format = resolve_file_and_format(file, parse_format)
     analyzer = LogAnalyzer(parse_format, regex)
-    entries = analyzer.filter_logs(file, level, limit, start, end)
+    entries = analyzer.filter_logs(file, level, limit, start, end, keyword_search)
 
     export_type = file_type.lower()
     if output is None:

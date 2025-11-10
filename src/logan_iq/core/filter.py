@@ -46,6 +46,13 @@ class LogFilter:
 
         return filtered
 
+    def filter_by_keyword(self, logs: List[dict], keyword: str) -> List[dict]:
+        """Return logs where the message contains the keyword (case-insensitive)."""
+        if not keyword:
+            return logs
+        keyword_lower = keyword.lower()
+        return [log for log in logs if keyword_lower in log.get("message", "").lower()]
+
     def filter(
         self,
         logs: List[dict],

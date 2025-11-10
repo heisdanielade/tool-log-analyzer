@@ -35,9 +35,14 @@ class LogAnalyzer:
         limit: Optional[int] = None,
         start: Optional[str] = None,
         end: Optional[str] = None,
+        search: Optional[str] = None
     ) -> List[dict]:
         logs = self.analyze(file_path)
-        return self.filter.filter(logs, level, limit, start, end)
+        filtered = self.filter.filter(logs, level, limit, start, end)
+
+        if search:
+            filtered = self.filter.filter_by_keyword(filtered, search)
+        return filtered
 
     def summarize(self, file_path: str) -> Dict[str, int]:
         logs = self.analyze(file_path)
