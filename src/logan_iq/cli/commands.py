@@ -156,7 +156,7 @@ def show_config():
         typer.echo("Current Configurations:\n")
         for key, value in config.items():
             typer.echo(f"- {key}:" + Fore.CYAN + f" {value}" + Style.RESET_ALL)
-        typer.echo("\n")
+        typer.echo("")
 
 @config_app.command("delete")
 def delete_config(
