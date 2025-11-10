@@ -1,7 +1,7 @@
 [project]
 name = "logan_iq"
 version = "1.2.2"
-description = "Interactive CLI tool for multi-log analysis and export."
+description = "Interactive CLI tool for multi-format log analysis, filtering and export."
 authors = [
     { name = "heisdanielade" }
 ]
@@ -36,8 +36,8 @@ where = ["src"]
 
 # Metadata for package index / tooling
 [project.urls]
-Homepage = "https://github.com/heisdanielade/tool-log-analyzer"
-Issues = "https://github.com/heisdanielade/tool-log-analyzer/issues"
+Homepage = "https://github.com/heisdanielade/cli-logan-iq"
+Issues = "https://github.com/heisdanielade/cli-logan-iq/issues"
 
 [build-system]
 requires = ["setuptools>=65.0", "wheel"]

@@ -57,7 +57,7 @@ Each log line is converted into a structured dictionary with fields like `dateti
 
 3. **Filter (Optional):**
 
-Narrow results by log level, date range, or limit the number of entries displayed.
+Narrow results by log level, date range, keyword(s) or limit the number of entries displayed.
 
 4. **Analyze or Summarize:**
 
