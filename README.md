@@ -57,7 +57,8 @@ Each log line is converted into a structured dictionary with fields like `dateti
 
 3. **Filter (Optional):**
 
-Narrow results by log level, date range, keyword(s) or limit the number of entries displayed.
+Narrow results by log level, date range, keyword(s) search or limit the number of entries displayed.
+<br>**NOTE:** Keyword search covers `message`, `method`, `path` and `status`/`status_code` if they exist in json logs.
 
 4. **Analyze or Summarize:**
 

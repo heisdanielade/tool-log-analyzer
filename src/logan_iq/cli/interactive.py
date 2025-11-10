@@ -19,7 +19,7 @@ def interactive_mode(app: typer.Typer):
     while True:
         try:
             command = input(f"{Fore.BLUE}\033[1mlogan-iq>> \033[0m{Style.RESET_ALL}").strip()
-            if command in ("exit", "quit", "q", "cancel"):
+            if command in ("exit", "quit", "q", "cancel", "interactive"):
                 print("\nGoodbye..\n")
                 break
 

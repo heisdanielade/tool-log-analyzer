@@ -14,9 +14,10 @@ class LogAnalyzer:
     """High-level API for CLI commands to analyze, filter, summarize, export logs."""
 
     def __init__(self, parse_format: str, custom_regex: Optional[str] = None):
+        self.parse_format = parse_format
         self.parser = LogParser(parse_format, custom_regex=custom_regex)
         self.filter = LogFilter()
-        self.summary = LogSummarizer()
+        self.summarize = LogSummarizer()
         self.exporter = Exporter()
 
     def _validate_file(self, file_path: str):
@@ -41,12 +42,13 @@ class LogAnalyzer:
         filtered = self.filter.filter(logs, level, limit, start, end)
 
         if search:
-            filtered = self.filter.filter_by_keyword(filtered, search)
+            filtered = self.filter.filter_by_keyword(logs=filtered, keyword=search, parse_fmt=self.parse_format)
+
         return filtered
 
     def summarize(self, file_path: str) -> Dict[str, int]:
         logs = self.analyze(file_path)
-        return self.summary.count_levels(logs)
+        return self.summarize.count_levels(logs)
 
     def summarize_by_day(
             self,
@@ -57,7 +59,7 @@ class LogAnalyzer:
     ) -> Dict[str, int]:
         """Return counts per log level for a specific day."""
         logs = self.analyze(file_path)
-        return self.summary.count_logs_in_a_day(logs, day, day_fmt=day_fmt, log_fmt=log_fmt)
+        return self.summarize.count_logs_in_a_day(logs, day, day_fmt=day_fmt, log_fmt=log_fmt)
 
     def print_table(self, data: List[dict]):
         print(self.exporter.to_table(data))

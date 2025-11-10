@@ -46,12 +46,26 @@ class LogFilter:
 
         return filtered
 
-    def filter_by_keyword(self, logs: List[dict], keyword: str) -> List[dict]:
-        """Return logs where the message contains the keyword (case-insensitive)."""
+    def filter_by_keyword(self, logs: List[dict], keyword: str, parse_fmt: str) -> List[dict]:
+        """Return logs where the message and/or (method, path, status_code) contains the keyword (case-insensitive)."""
         if not keyword:
             return logs
-        keyword_lower = keyword.lower()
-        return [log for log in logs if keyword_lower in log.get("message", "").lower()]
+
+        keyword = keyword.lower()
+        keys_to_check =  ("message", "path", "method", "status", "status_code")
+
+        normalize = lambda v: str(v).lower() if v is not None else ""
+
+        if parse_fmt == "json":
+            return [
+                log for log in logs
+                if any(keyword in normalize(log.get(k)) for k in keys_to_check)
+            ]
+        else:
+            return [
+                log for log in logs
+                if keyword in normalize(log.get("message"))
+            ]
 
     def filter(
         self,
